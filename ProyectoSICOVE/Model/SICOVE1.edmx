@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SICOVE1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Compras">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdFormaPago" Type="int" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="NumFac" Type="int" Nullable="false" />
+          <Property Name="DetalleCompra" Type="varchar" MaxLength="100" />
+          <Property Name="TotalCompra" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DetalleCompras">
+          <Key>
+            <PropertyRef Name="IdDetalleCompra" />
+          </Key>
+          <Property Name="IdDetalleCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCompra" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+          <Property Name="PrecioCompra" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IVA" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_DetalleVentas">
+          <Key>
+            <PropertyRef Name="IdDetalleVenta" />
+          </Key>
+          <Property Name="IdDetalleVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVenta" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+          <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Descuento" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IVA" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Empleados">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_FormaPago">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Name="IdFormaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Inventarios">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Existencia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="IdRol" Type="int" />
+          <Property Name="IdEmpleado" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Ventas">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFormaPago" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="NumFac" Type="int" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="TotalVenta" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tb_Compra__IdEmp__38996AB5">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Compra__IdFor__37A5467C">
+          <End Role="tb_FormaPago" Type="Self.tb_FormaPago" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Compra__IdPro__36B12243">
+          <End Role="tb_Proveedores" Type="Self.tb_Proveedores" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdCat__3D5E1FD2">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdCat__46E78A0C">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdCom__3B75D760">
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Compras">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdPro__3C69FB99">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdPro__45F365D3">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdVen__44FF419A">
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ventas">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Invent__IdPro__49C3F6B7">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_Inventarios" Type="Self.tb_Inventarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_Inventarios">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__IdCat__33D4B598">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Usuari__IdEmp__2D27B809">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Usuarios" Type="Self.tb_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Usuarios">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Usuari__IdRol__2C3393D0">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_Usuarios" Type="Self.tb_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="tb_Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdCli__412EB0B6">
+          <End Role="tb_Clientes" Type="Self.tb_Clientes" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdEmp__4222D4EF">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdFor__403A8C7D">
+          <End Role="tb_FormaPago" Type="Self.tb_FormaPago" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SICOVE1ModelStoreContainer">
+          <EntitySet Name="tb_Categorias" EntityType="Self.tb_Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Clientes" EntityType="Self.tb_Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Compras" EntityType="Self.tb_Compras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DetalleCompras" EntityType="Self.tb_DetalleCompras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DetalleVentas" EntityType="Self.tb_DetalleVentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Empleados" EntityType="Self.tb_Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_FormaPago" EntityType="Self.tb_FormaPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Inventarios" EntityType="Self.tb_Inventarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Productos" EntityType="Self.tb_Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Proveedores" EntityType="Self.tb_Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Roles" EntityType="Self.tb_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Usuarios" EntityType="Self.tb_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Ventas" EntityType="Self.tb_Ventas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Compra__IdEmp__38996AB5" Association="Self.FK__tb_Compra__IdEmp__38996AB5">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Compra__IdFor__37A5467C" Association="Self.FK__tb_Compra__IdFor__37A5467C">
+            <End Role="tb_FormaPago" EntitySet="tb_FormaPago" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Compra__IdPro__36B12243" Association="Self.FK__tb_Compra__IdPro__36B12243">
+            <End Role="tb_Proveedores" EntitySet="tb_Proveedores" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdCat__3D5E1FD2" Association="Self.FK__tb_Detall__IdCat__3D5E1FD2">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdCat__46E78A0C" Association="Self.FK__tb_Detall__IdCat__46E78A0C">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdCom__3B75D760" Association="Self.FK__tb_Detall__IdCom__3B75D760">
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdPro__3C69FB99" Association="Self.FK__tb_Detall__IdPro__3C69FB99">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdPro__45F365D3" Association="Self.FK__tb_Detall__IdPro__45F365D3">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdVen__44FF419A" Association="Self.FK__tb_Detall__IdVen__44FF419A">
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Invent__IdPro__49C3F6B7" Association="Self.FK__tb_Invent__IdPro__49C3F6B7">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_Inventarios" EntitySet="tb_Inventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__IdCat__33D4B598" Association="Self.FK__tb_Produc__IdCat__33D4B598">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Usuari__IdEmp__2D27B809" Association="Self.FK__tb_Usuari__IdEmp__2D27B809">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Usuarios" EntitySet="tb_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Usuari__IdRol__2C3393D0" Association="Self.FK__tb_Usuari__IdRol__2C3393D0">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_Usuarios" EntitySet="tb_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdCli__412EB0B6" Association="Self.FK__tb_Ventas__IdCli__412EB0B6">
+            <End Role="tb_Clientes" EntitySet="tb_Clientes" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdEmp__4222D4EF" Association="Self.FK__tb_Ventas__IdEmp__4222D4EF">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdFor__403A8C7D" Association="Self.FK__tb_Ventas__IdFor__403A8C7D">
+            <End Role="tb_FormaPago" EntitySet="tb_FormaPago" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SICOVE1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_DetalleCompras" Relationship="Self.FK__tb_Detall__IdCat__3D5E1FD2" FromRole="tb_Categorias" ToRole="tb_DetalleCompras" />
+          <NavigationProperty Name="tb_DetalleVentas" Relationship="Self.FK__tb_Detall__IdCat__46E78A0C" FromRole="tb_Categorias" ToRole="tb_DetalleVentas" />
+          <NavigationProperty Name="tb_Productos" Relationship="Self.FK__tb_Produc__IdCat__33D4B598" FromRole="tb_Categorias" ToRole="tb_Productos" />
+        </EntityType>
+        <EntityType Name="tb_Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Ventas" Relationship="Self.FK__tb_Ventas__IdCli__412EB0B6" FromRole="tb_Clientes" ToRole="tb_Ventas" />
+        </EntityType>
+        <EntityType Name="tb_Compras">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdFormaPago" Type="Int32" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="NumFac" Type="Int32" Nullable="false" />
+          <Property Name="DetalleCompra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TotalCompra" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Empleados" Relationship="Self.FK__tb_Compra__IdEmp__38996AB5" FromRole="tb_Compras" ToRole="tb_Empleados" />
+          <NavigationProperty Name="tb_FormaPago" Relationship="Self.FK__tb_Compra__IdFor__37A5467C" FromRole="tb_Compras" ToRole="tb_FormaPago" />
+          <NavigationProperty Name="tb_Proveedores" Relationship="Self.FK__tb_Compra__IdPro__36B12243" FromRole="tb_Compras" ToRole="tb_Proveedores" />
+          <NavigationProperty Name="tb_DetalleCompras" Relationship="Self.FK__tb_Detall__IdCom__3B75D760" FromRole="tb_Compras" ToRole="tb_DetalleCompras" />
+        </EntityType>
+        <EntityType Name="tb_DetalleCompras">
+          <Key>
+            <PropertyRef Name="IdDetalleCompra" />
+          </Key>
+          <Property Name="IdDetalleCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompra" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="PrecioCompra" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IVA" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <NavigationProperty Name="tb_Categorias" Relationship="Self.FK__tb_Detall__IdCat__3D5E1FD2" FromRole="tb_DetalleCompras" ToRole="tb_Categorias" />
+          <NavigationProperty Name="tb_Compras" Relationship="Self.FK__tb_Detall__IdCom__3B75D760" FromRole="tb_DetalleCompras" ToRole="tb_Compras" />
+          <NavigationProperty Name="tb_Productos" Relationship="Self.FK__tb_Detall__IdPro__3C69FB99" FromRole="tb_DetalleCompras" ToRole="tb_Productos" />
+        </EntityType>
+        <EntityType Name="tb_DetalleVentas">
+          <Key>
+            <PropertyRef Name="IdDetalleVenta" />
+          </Key>
+          <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Descuento" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IVA" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <NavigationProperty Name="tb_Categorias" Relationship="Self.FK__tb_Detall__IdCat__46E78A0C" FromRole="tb_DetalleVentas" ToRole="tb_Categorias" />
+          <NavigationProperty Name="tb_Productos" Relationship="Self.FK__tb_Detall__IdPro__45F365D3" FromRole="tb_DetalleVentas" ToRole="tb_Productos" />
+          <NavigationProperty Name="tb_Ventas" Relationship="Self.FK__tb_Detall__IdVen__44FF419A" FromRole="tb_DetalleVentas" ToRole="tb_Ventas" />
+        </EntityType>
+        <EntityType Name="tb_Empleados">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Compras" Relationship="Self.FK__tb_Compra__IdEmp__38996AB5" FromRole="tb_Empleados" ToRole="tb_Compras" />
+          <NavigationProperty Name="tb_Usuarios" Relationship="Self.FK__tb_Usuari__IdEmp__2D27B809" FromRole="tb_Empleados" ToRole="tb_Usuarios" />
+          <NavigationProperty Name="tb_Ventas" Relationship="Self.FK__tb_Ventas__IdEmp__4222D4EF" FromRole="tb_Empleados" ToRole="tb_Ventas" />
+        </EntityType>
+        <EntityType Name="tb_FormaPago">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Name="IdFormaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Compras" Relationship="Self.FK__tb_Compra__IdFor__37A5467C" FromRole="tb_FormaPago" ToRole="tb_Compras" />
+          <NavigationProperty Name="tb_Ventas" Relationship="Self.FK__tb_Ventas__IdFor__403A8C7D" FromRole="tb_FormaPago" ToRole="tb_Ventas" />
+        </EntityType>
+        <EntityType Name="tb_Inventarios">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Existencia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_Productos" Relationship="Self.FK__tb_Invent__IdPro__49C3F6B7" FromRole="tb_Inventarios" ToRole="tb_Productos" />
+        </EntityType>
+        <EntityType Name="tb_Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <NavigationProperty Name="tb_Categorias" Relationship="Self.FK__tb_Produc__IdCat__33D4B598" FromRole="tb_Productos" ToRole="tb_Categorias" />
+          <NavigationProperty Name="tb_DetalleCompras" Relationship="Self.FK__tb_Detall__IdPro__3C69FB99" FromRole="tb_Productos" ToRole="tb_DetalleCompras" />
+          <NavigationProperty Name="tb_DetalleVentas" Relationship="Self.FK__tb_Detall__IdPro__45F365D3" FromRole="tb_Productos" ToRole="tb_DetalleVentas" />
+          <NavigationProperty Name="tb_Inventarios" Relationship="Self.FK__tb_Invent__IdPro__49C3F6B7" FromRole="tb_Productos" ToRole="tb_Inventarios" />
+        </EntityType>
+        <EntityType Name="tb_Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Compras" Relationship="Self.FK__tb_Compra__IdPro__36B12243" FromRole="tb_Proveedores" ToRole="tb_Compras" />
+        </EntityType>
+        <EntityType Name="tb_Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Usuarios" Relationship="Self.FK__tb_Usuari__IdRol__2C3393D0" FromRole="tb_Roles" ToRole="tb_Usuarios" />
+        </EntityType>
+        <EntityType Name="tb_Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <NavigationProperty Name="tb_Empleados" Relationship="Self.FK__tb_Usuari__IdEmp__2D27B809" FromRole="tb_Usuarios" ToRole="tb_Empleados" />
+          <NavigationProperty Name="tb_Roles" Relationship="Self.FK__tb_Usuari__IdRol__2C3393D0" FromRole="tb_Usuarios" ToRole="tb_Roles" />
+        </EntityType>
+        <EntityType Name="tb_Ventas">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFormaPago" Type="Int32" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="NumFac" Type="Int32" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TotalVenta" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tb_Clientes" Relationship="Self.FK__tb_Ventas__IdCli__412EB0B6" FromRole="tb_Ventas" ToRole="tb_Clientes" />
+          <NavigationProperty Name="tb_DetalleVentas" Relationship="Self.FK__tb_Detall__IdVen__44FF419A" FromRole="tb_Ventas" ToRole="tb_DetalleVentas" />
+          <NavigationProperty Name="tb_Empleados" Relationship="Self.FK__tb_Ventas__IdEmp__4222D4EF" FromRole="tb_Ventas" ToRole="tb_Empleados" />
+          <NavigationProperty Name="tb_FormaPago" Relationship="Self.FK__tb_Ventas__IdFor__403A8C7D" FromRole="tb_Ventas" ToRole="tb_FormaPago" />
+        </EntityType>
+        <Association Name="FK__tb_Detall__IdCat__3D5E1FD2">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdCat__46E78A0C">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Produc__IdCat__33D4B598">
+          <End Role="tb_Categorias" Type="Self.tb_Categorias" Multiplicity="0..1" />
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="tb_Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdCli__412EB0B6">
+          <End Role="tb_Clientes" Type="Self.tb_Clientes" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Compra__IdEmp__38996AB5">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Compra__IdFor__37A5467C">
+          <End Role="tb_FormaPago" Type="Self.tb_FormaPago" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Compra__IdPro__36B12243">
+          <End Role="tb_Proveedores" Type="Self.tb_Proveedores" Multiplicity="0..1" />
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="tb_Compras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdCom__3B75D760">
+          <End Role="tb_Compras" Type="Self.tb_Compras" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Compras">
+              <PropertyRef Name="IdCompra" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdPro__3C69FB99">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_DetalleCompras" Type="Self.tb_DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_DetalleCompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdPro__45F365D3">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Detall__IdVen__44FF419A">
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="0..1" />
+          <End Role="tb_DetalleVentas" Type="Self.tb_DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ventas">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="tb_DetalleVentas">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Usuari__IdEmp__2D27B809">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Usuarios" Type="Self.tb_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Usuarios">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdEmp__4222D4EF">
+          <End Role="tb_Empleados" Type="Self.tb_Empleados" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Empleados">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Ventas__IdFor__403A8C7D">
+          <End Role="tb_FormaPago" Type="Self.tb_FormaPago" Multiplicity="0..1" />
+          <End Role="tb_Ventas" Type="Self.tb_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="tb_Ventas">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Invent__IdPro__49C3F6B7">
+          <End Role="tb_Productos" Type="Self.tb_Productos" Multiplicity="0..1" />
+          <End Role="tb_Inventarios" Type="Self.tb_Inventarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tb_Inventarios">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Usuari__IdRol__2C3393D0">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_Usuarios" Type="Self.tb_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="tb_Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SICOVE1Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Categorias" EntityType="Self.tb_Categorias" />
+          <EntitySet Name="tb_Clientes" EntityType="Self.tb_Clientes" />
+          <EntitySet Name="tb_Compras" EntityType="Self.tb_Compras" />
+          <EntitySet Name="tb_DetalleCompras" EntityType="Self.tb_DetalleCompras" />
+          <EntitySet Name="tb_DetalleVentas" EntityType="Self.tb_DetalleVentas" />
+          <EntitySet Name="tb_Empleados" EntityType="Self.tb_Empleados" />
+          <EntitySet Name="tb_FormaPago" EntityType="Self.tb_FormaPago" />
+          <EntitySet Name="tb_Inventarios" EntityType="Self.tb_Inventarios" />
+          <EntitySet Name="tb_Productos" EntityType="Self.tb_Productos" />
+          <EntitySet Name="tb_Proveedores" EntityType="Self.tb_Proveedores" />
+          <EntitySet Name="tb_Roles" EntityType="Self.tb_Roles" />
+          <EntitySet Name="tb_Usuarios" EntityType="Self.tb_Usuarios" />
+          <EntitySet Name="tb_Ventas" EntityType="Self.tb_Ventas" />
+          <AssociationSet Name="FK__tb_Detall__IdCat__3D5E1FD2" Association="Self.FK__tb_Detall__IdCat__3D5E1FD2">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdCat__46E78A0C" Association="Self.FK__tb_Detall__IdCat__46E78A0C">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Produc__IdCat__33D4B598" Association="Self.FK__tb_Produc__IdCat__33D4B598">
+            <End Role="tb_Categorias" EntitySet="tb_Categorias" />
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdCli__412EB0B6" Association="Self.FK__tb_Ventas__IdCli__412EB0B6">
+            <End Role="tb_Clientes" EntitySet="tb_Clientes" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Compra__IdEmp__38996AB5" Association="Self.FK__tb_Compra__IdEmp__38996AB5">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Compra__IdFor__37A5467C" Association="Self.FK__tb_Compra__IdFor__37A5467C">
+            <End Role="tb_FormaPago" EntitySet="tb_FormaPago" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Compra__IdPro__36B12243" Association="Self.FK__tb_Compra__IdPro__36B12243">
+            <End Role="tb_Proveedores" EntitySet="tb_Proveedores" />
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdCom__3B75D760" Association="Self.FK__tb_Detall__IdCom__3B75D760">
+            <End Role="tb_Compras" EntitySet="tb_Compras" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdPro__3C69FB99" Association="Self.FK__tb_Detall__IdPro__3C69FB99">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_DetalleCompras" EntitySet="tb_DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdPro__45F365D3" Association="Self.FK__tb_Detall__IdPro__45F365D3">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Detall__IdVen__44FF419A" Association="Self.FK__tb_Detall__IdVen__44FF419A">
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+            <End Role="tb_DetalleVentas" EntitySet="tb_DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Usuari__IdEmp__2D27B809" Association="Self.FK__tb_Usuari__IdEmp__2D27B809">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Usuarios" EntitySet="tb_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdEmp__4222D4EF" Association="Self.FK__tb_Ventas__IdEmp__4222D4EF">
+            <End Role="tb_Empleados" EntitySet="tb_Empleados" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Ventas__IdFor__403A8C7D" Association="Self.FK__tb_Ventas__IdFor__403A8C7D">
+            <End Role="tb_FormaPago" EntitySet="tb_FormaPago" />
+            <End Role="tb_Ventas" EntitySet="tb_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Invent__IdPro__49C3F6B7" Association="Self.FK__tb_Invent__IdPro__49C3F6B7">
+            <End Role="tb_Productos" EntitySet="tb_Productos" />
+            <End Role="tb_Inventarios" EntitySet="tb_Inventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Usuari__IdRol__2C3393D0" Association="Self.FK__tb_Usuari__IdRol__2C3393D0">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_Usuarios" EntitySet="tb_Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SICOVE1ModelStoreContainer" CdmEntityContainer="SICOVE1Entities2">
+          <EntitySetMapping Name="tb_Categorias">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Categorias">
+              <MappingFragment StoreEntitySet="tb_Categorias">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Clientes">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Clientes">
+              <MappingFragment StoreEntitySet="tb_Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Compras">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Compras">
+              <MappingFragment StoreEntitySet="tb_Compras">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="NumFac" ColumnName="NumFac" />
+                <ScalarProperty Name="DetalleCompra" ColumnName="DetalleCompra" />
+                <ScalarProperty Name="TotalCompra" ColumnName="TotalCompra" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DetalleCompras">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_DetalleCompras">
+              <MappingFragment StoreEntitySet="tb_DetalleCompras">
+                <ScalarProperty Name="IdDetalleCompra" ColumnName="IdDetalleCompra" />
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DetalleVentas">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_DetalleVentas">
+              <MappingFragment StoreEntitySet="tb_DetalleVentas">
+                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Empleados">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Empleados">
+              <MappingFragment StoreEntitySet="tb_Empleados">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_FormaPago">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_FormaPago">
+              <MappingFragment StoreEntitySet="tb_FormaPago">
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Inventarios">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Inventarios">
+              <MappingFragment StoreEntitySet="tb_Inventarios">
+                <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Productos">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Productos">
+              <MappingFragment StoreEntitySet="tb_Productos">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Proveedores">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Proveedores">
+              <MappingFragment StoreEntitySet="tb_Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Roles">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Roles">
+              <MappingFragment StoreEntitySet="tb_Roles">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Usuarios">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Usuarios">
+              <MappingFragment StoreEntitySet="tb_Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Ventas">
+            <EntityTypeMapping TypeName="SICOVE1Model.tb_Ventas">
+              <MappingFragment StoreEntitySet="tb_Ventas">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="NumFac" ColumnName="NumFac" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="TotalVenta" ColumnName="TotalVenta" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
