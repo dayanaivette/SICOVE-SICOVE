@@ -20,6 +20,7 @@ namespace ProyectoSICOVE.Formularios
         private void empleadoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             frmEmpleado empleado = new frmEmpleado();
+            empleado.MdiParent = this;
             empleado.Show();
         }
 
@@ -33,6 +34,7 @@ namespace ProyectoSICOVE.Formularios
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmProveedor proveedor = new frmProveedor();
+            
             proveedor.Show();
         }
 
@@ -114,14 +116,22 @@ namespace ProyectoSICOVE.Formularios
         {
             if (WindowState == FormWindowState.Normal)
             {
-                WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Maximized;
             }
-            else if (WindowState == FormWindowState.Minimized)
+            else if (WindowState == FormWindowState.Maximized)
             {
                 WindowState = FormWindowState.Normal;
             }
         }
 
-  
+        private void frmMenu_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

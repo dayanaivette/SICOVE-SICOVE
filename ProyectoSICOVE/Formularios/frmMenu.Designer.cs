@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.MenuStrip menuStrip1;
+            System.Windows.Forms.MenuStrip MStrip;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,37 +51,35 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrar1 = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            menuStrip1 = new System.Windows.Forms.MenuStrip();
-            menuStrip1.SuspendLayout();
+            MStrip = new System.Windows.Forms.MenuStrip();
+            MStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.toolStripContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // MStrip
             // 
-            menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
-            menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            menuStrip1.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            MStrip.AutoSize = false;
+            MStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            MStrip.Dock = System.Windows.Forms.DockStyle.None;
+            MStrip.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            MStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrosToolStripMenuItem,
             this.consultasToolStripMenuItem,
             this.procesosToolStripMenuItem,
             this.otrosToolStripMenuItem});
-            menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            menuStrip1.Location = new System.Drawing.Point(14, 169);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            menuStrip1.Size = new System.Drawing.Size(118, 110);
-            menuStrip1.Stretch = false;
-            menuStrip1.TabIndex = 2;
-            menuStrip1.TabStop = true;
-            menuStrip1.Text = "menuStrip1";
+            MStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            MStrip.Location = new System.Drawing.Point(0, 166);
+            MStrip.Name = "MStrip";
+            MStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            MStrip.Size = new System.Drawing.Size(161, 110);
+            MStrip.Stretch = false;
+            MStrip.TabIndex = 2;
+            MStrip.TabStop = true;
+            MStrip.Text = "menu";
             // 
             // registrosToolStripMenuItem
             // 
@@ -102,7 +100,7 @@
             this.registrosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.registrosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registrosToolStripMenuItem.Image")));
             this.registrosToolStripMenuItem.Name = "registrosToolStripMenuItem";
-            this.registrosToolStripMenuItem.Size = new System.Drawing.Size(111, 27);
+            this.registrosToolStripMenuItem.Size = new System.Drawing.Size(154, 27);
             this.registrosToolStripMenuItem.Text = "Registros";
             // 
             // empleadoToolStripMenuItem
@@ -184,7 +182,7 @@
             // 
             this.cdsvdToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
             this.cdsvdToolStripMenuItem.Name = "cdsvdToolStripMenuItem";
-            this.cdsvdToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.cdsvdToolStripMenuItem.Size = new System.Drawing.Size(161, 28);
             this.cdsvdToolStripMenuItem.Text = "Existencias";
             this.cdsvdToolStripMenuItem.Click += new System.EventHandler(this.cdsvdToolStripMenuItem_Click);
             // 
@@ -255,7 +253,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(756, 34);
+            this.panel1.Size = new System.Drawing.Size(756, 38);
             this.panel1.TabIndex = 42;
             // 
             // label1
@@ -271,28 +269,32 @@
             // 
             // btnCerrar1
             // 
+            this.btnCerrar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(215)))), ((int)(((byte)(196)))));
             this.btnCerrar1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCerrar1.FlatAppearance.BorderSize = 0;
             this.btnCerrar1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar1.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar1.Image")));
-            this.btnCerrar1.Location = new System.Drawing.Point(725, 1);
+            this.btnCerrar1.Location = new System.Drawing.Point(726, 1);
             this.btnCerrar1.Name = "btnCerrar1";
-            this.btnCerrar1.Size = new System.Drawing.Size(30, 30);
+            this.btnCerrar1.Size = new System.Drawing.Size(30, 35);
             this.btnCerrar1.TabIndex = 17;
             this.btnCerrar1.UseVisualStyleBackColor = false;
             this.btnCerrar1.Click += new System.EventHandler(this.btnCerrar1_Click);
             // 
             // btnMinimizar
             // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(215)))), ((int)(((byte)(196)))));
             this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(696, 6);
+            this.btnMinimizar.Location = new System.Drawing.Point(696, 1);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(28, 23);
+            this.btnMinimizar.Size = new System.Drawing.Size(28, 36);
             this.btnMinimizar.TabIndex = 16;
             this.btnMinimizar.UseVisualStyleBackColor = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
@@ -300,13 +302,14 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
-            this.panel2.Controls.Add(menuStrip1);
+            this.panel2.Controls.Add(MStrip);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 34);
+            this.panel2.Location = new System.Drawing.Point(0, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(156, 422);
+            this.panel2.Size = new System.Drawing.Size(161, 418);
             this.panel2.TabIndex = 43;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox1
             // 
@@ -318,30 +321,12 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // toolStripContainer1
-            // 
-            this.toolStripContainer1.BottomToolStripPanelVisible = false;
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(600, 422);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(156, 34);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(600, 422);
-            this.toolStripContainer1.TabIndex = 44;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            this.toolStripContainer1.TopToolStripPanelVisible = false;
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
             this.ClientSize = new System.Drawing.Size(756, 456);
-            this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
@@ -350,17 +335,14 @@
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.Name = "frmMenu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SICOVE";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            this.Resize += new System.EventHandler(this.frmMenu_Resize);
+            MStrip.ResumeLayout(false);
+            MStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -384,12 +366,10 @@
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnMinimizar;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnCerrar1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.Button btnMinimizar;
     }
 }
