@@ -24,6 +24,22 @@ namespace ProyectoSICOVE.Formularios
         {
             CargarCombos();
             txtNunFac.Focus();
+            retornoId();
+        }
+        void retornoId()
+        {
+            using (SICOVE1Entities2 db = new SICOVE1Entities2())
+            {
+
+                var tb_compras = db.tb_Compras;
+                txtNunFac.Text = "1";
+                foreach (var iterardatostbventa in tb_compras)
+                {
+                    int idCompra = iterardatostbventa.NumFac;
+                    int suma = idCompra + 1;
+                    txtNunFac.Text = suma.ToString();
+                }
+            }
         }
 
         void CargarCombos()
@@ -56,7 +72,7 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void btnRegistrarProveedor_Click(object sender, EventArgs e)
@@ -81,6 +97,7 @@ namespace ProyectoSICOVE.Formularios
             txtSubTotal.Clear();
             txtIVA.Clear();
             txtTotal.Clear();
+            txtIdCategoria.Clear();
         }
         void calculoSubTotal()
         {
@@ -125,6 +142,7 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
+        //agregando el detalle del producto a la tabla, el cual sera el detalle de la compra 
         private void btnAgregarProd_Click(object sender, EventArgs e)
         {
             try
@@ -153,6 +171,8 @@ namespace ProyectoSICOVE.Formularios
             int obtenerUltimaFilas = dgvCompras.Rows.Count - 1;
             dgvCompras.FirstDisplayedScrollingRowIndex = obtenerUltimaFilas;
             dgvCompras.Rows[obtenerUltimaFilas].Selected = true;
+
+            txtBuscarProducto.Focus();
         }
 
 
@@ -209,8 +229,10 @@ namespace ProyectoSICOVE.Formularios
             calcularTotalFinal();
         }
 
+        //llamdo por medio de codigo de barras el producto
         private void txtBuscarProducto_KeyUp(object sender, KeyEventArgs e)
         {
+            //cuando entra el numero y se acciona el evento de enter
             if (txtBuscarProducto.Text == "")
             {
                 if (e.KeyCode == Keys.Enter)
@@ -231,6 +253,7 @@ namespace ProyectoSICOVE.Formularios
 
                     txtCodProducto.Text = Convert.ToString(producto.IdProducto);
                     txtNombreProducto.Text = Convert.ToString(producto.Nombre);
+                    txtIdCategoria.Text = Convert.ToString(categorias.IdCategoria);
                     txtCategoriaProd.Text = Convert.ToString(categorias.Nombre);
 
                     txtPrecio.Focus();
@@ -259,10 +282,13 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            int suma = 0;
+            int productoInventario = 0;
             try
             {
                 using (SICOVE1Entities2 db = new SICOVE1Entities2())
                 {
+
                     // se hacer el insert de la compra en la tabla de compras 
                     String comboProveedor = cmbProveedor.SelectedValue.ToString();
                     compras.IdProveedor = Convert.ToInt32(comboProveedor);
@@ -281,7 +307,7 @@ namespace ProyectoSICOVE.Formularios
                     db.SaveChanges();
 
 
-                    ///////////////////////////////////////////////////////////////////////////////// Lilian Bonilla.
+                    ///////////////////////////////////////////////////////////////////// Lilian Bonilla.
                     //se hace el insert para la tabla detalle de la compra 
 
                     tb_DetalleCompras detalleCompra = new tb_DetalleCompras();
@@ -319,14 +345,39 @@ namespace ProyectoSICOVE.Formularios
                         detalleCompra.IVA = IVAConvertidos;
                         detalleCompra.Total = totalConvertidos;
 
+                        
+
+                        var listaInventario = from inv in db.tb_Inventarios
+                                              from prod in db.tb_Productos
+                                              where prod.IdProducto == inv.IdProducto
+                                              select prod;
+
+                        foreach (var iterar in listaInventario)
+                        {
+                            tb_Productos productos = new tb_Productos();
+                            productos = iterar;
+                            
+                            int idInv = Int32.Parse(idProducto.ToString());
+                            inventarios = db.tb_Inventarios.Where(VerificarID => VerificarID.IdProducto == idInv).First();
+                            int sumarInventario = (Convert.ToInt32(cantidadConvertidos) / Convert.ToInt32(inventarios.Existencia));
+                            inventarios.Existencia = inventarios.Existencia + sumarInventario;
+                        }
+
                         db.tb_DetalleCompras.Add(detalleCompra);
+                        db.tb_Inventarios.Add(inventarios);
                         db.SaveChanges();
+                        //productoInventario = Convert.ToInt32(detalleCompra.IdProducto);
+                        //suma = detalleCompra.Cantidad;
+
                     }
-                    MessageBox.Show("La venta se registro con exito");
+                    MessageBox.Show("La Compra se registro con exito ");
                     dgvCompras.Rows.Clear();
                     limpiarVenta();
                     Limpiar();
                     CargarCombos();
+                    retornoId();
+
+
                 }
             }
             catch (Exception ex)
@@ -335,9 +386,16 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnMinimizar_Click(object sender, EventArgs e)
         {
-
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            else if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

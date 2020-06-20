@@ -81,7 +81,7 @@
             this.dgvExistencias.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExistencias.Enabled = false;
             this.dgvExistencias.EnableHeadersVisualStyles = false;
-            this.dgvExistencias.Location = new System.Drawing.Point(82, 138);
+            this.dgvExistencias.Location = new System.Drawing.Point(21, 138);
             this.dgvExistencias.Name = "dgvExistencias";
             this.dgvExistencias.ReadOnly = true;
             this.dgvExistencias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -93,7 +93,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvExistencias.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvExistencias.Size = new System.Drawing.Size(555, 230);
+            this.dgvExistencias.Size = new System.Drawing.Size(616, 259);
             this.dgvExistencias.TabIndex = 1;
             this.dgvExistencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExistencias_CellContentClick);
             // 
@@ -101,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(35, 95);
+            this.label3.Location = new System.Drawing.Point(17, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 21);
             this.label3.TabIndex = 13;
@@ -112,9 +112,9 @@
             this.txtBuscarProducto.BackColor = System.Drawing.Color.Silver;
             this.txtBuscarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscarProducto.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarProducto.Location = new System.Drawing.Point(164, 96);
+            this.txtBuscarProducto.Location = new System.Drawing.Point(146, 96);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
-            this.txtBuscarProducto.Size = new System.Drawing.Size(496, 21);
+            this.txtBuscarProducto.Size = new System.Drawing.Size(491, 21);
             this.txtBuscarProducto.TabIndex = 12;
             this.txtBuscarProducto.TextChanged += new System.EventHandler(this.txtBuscarProducto_TextChanged);
             // 
@@ -125,7 +125,7 @@
             this.btnCerrar1.FlatAppearance.BorderSize = 0;
             this.btnCerrar1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar1.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar1.Image")));
-            this.btnCerrar1.Location = new System.Drawing.Point(689, 3);
+            this.btnCerrar1.Location = new System.Drawing.Point(622, 3);
             this.btnCerrar1.Name = "btnCerrar1";
             this.btnCerrar1.Size = new System.Drawing.Size(30, 27);
             this.btnCerrar1.TabIndex = 17;
@@ -134,13 +134,14 @@
             // 
             // panel2
             // 
+            this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(215)))), ((int)(((byte)(196)))));
             this.panel2.Controls.Add(this.btnMinimizar);
             this.panel2.Controls.Add(this.btnCerrar1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(721, 33);
+            this.panel2.Size = new System.Drawing.Size(661, 33);
             this.panel2.TabIndex = 47;
             // 
             // btnMinimizar
@@ -150,7 +151,7 @@
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(662, 1);
+            this.btnMinimizar.Location = new System.Drawing.Point(595, 1);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(24, 29);
             this.btnMinimizar.TabIndex = 18;
@@ -161,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(721, 409);
+            this.ClientSize = new System.Drawing.Size(661, 409);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBuscarProducto);

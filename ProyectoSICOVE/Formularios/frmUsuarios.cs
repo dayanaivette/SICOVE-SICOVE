@@ -188,7 +188,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Algo Salio Mal, intente de nuevo. " + ex.ToString());
+                MessageBox.Show("Algo Salio Mal... " + ex.ToString());
             }
             
         }
@@ -236,7 +236,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal, intente de nuevo");
+                MessageBox.Show("Algo salio mal... " + ex.ToString());
             }
         }
 
@@ -255,11 +255,6 @@ namespace ProyectoSICOVE.Formularios
             {
                 WindowState = FormWindowState.Normal;
             }
-        }
-
-        private void cmbRol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

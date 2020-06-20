@@ -50,7 +50,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(36, 95);
+            this.label3.Location = new System.Drawing.Point(12, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 21);
             this.label3.TabIndex = 11;
@@ -62,7 +62,7 @@
             this.txtBuscarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscarProducto.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarProducto.Location = new System.Drawing.Point(165, 96);
+            this.txtBuscarProducto.Location = new System.Drawing.Point(141, 92);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
             this.txtBuscarProducto.Size = new System.Drawing.Size(290, 21);
             this.txtBuscarProducto.TabIndex = 10;
@@ -73,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(108, 55);
+            this.label1.Location = new System.Drawing.Point(84, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(373, 31);
             this.label1.TabIndex = 12;
@@ -95,9 +95,8 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBuscarProd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBuscarProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuscarProd.Enabled = false;
             this.dgvBuscarProd.EnableHeadersVisualStyles = false;
-            this.dgvBuscarProd.Location = new System.Drawing.Point(77, 139);
+            this.dgvBuscarProd.Location = new System.Drawing.Point(16, 135);
             this.dgvBuscarProd.Name = "dgvBuscarProd";
             this.dgvBuscarProd.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -114,7 +113,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(137)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvBuscarProd.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvBuscarProd.Size = new System.Drawing.Size(434, 156);
+            this.dgvBuscarProd.Size = new System.Drawing.Size(504, 156);
             this.dgvBuscarProd.TabIndex = 13;
             this.dgvBuscarProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscarProd_CellContentClick);
             this.dgvBuscarProd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscarProd_CellDoubleClick);
@@ -127,7 +126,7 @@
             this.btnCerrar1.FlatAppearance.BorderSize = 0;
             this.btnCerrar1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar1.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar1.Image")));
-            this.btnCerrar1.Location = new System.Drawing.Point(569, 4);
+            this.btnCerrar1.Location = new System.Drawing.Point(497, 1);
             this.btnCerrar1.Name = "btnCerrar1";
             this.btnCerrar1.Size = new System.Drawing.Size(24, 31);
             this.btnCerrar1.TabIndex = 17;
@@ -143,7 +142,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevo.Location = new System.Drawing.Point(470, 89);
+            this.btnNuevo.Location = new System.Drawing.Point(446, 85);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(74, 35);
             this.btnNuevo.TabIndex = 47;
@@ -161,7 +160,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 38);
+            this.panel1.Size = new System.Drawing.Size(531, 38);
             this.panel1.TabIndex = 48;
             // 
             // btnMinimizar
@@ -171,7 +170,7 @@
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(538, 5);
+            this.btnMinimizar.Location = new System.Drawing.Point(461, 3);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(28, 27);
             this.btnMinimizar.TabIndex = 18;
@@ -196,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(596, 331);
+            this.ClientSize = new System.Drawing.Size(531, 305);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvBuscarProd);

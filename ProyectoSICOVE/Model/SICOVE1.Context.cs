@@ -16,7 +16,7 @@ namespace ProyectoSICOVE.Model
     public partial class SICOVE1Entities2 : DbContext
     {
         public SICOVE1Entities2()
-            : base("name=SICOVE1Entities2")
+            : base("name=SICOVE1Entities")
         {
         }
     

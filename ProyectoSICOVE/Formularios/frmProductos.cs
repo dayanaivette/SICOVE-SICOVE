@@ -106,7 +106,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal, intente de nuevo");
+                MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
             }
         }
 
@@ -127,7 +127,7 @@ namespace ProyectoSICOVE.Formularios
                     db.tb_Productos.Add(productos);
                     db.SaveChanges();
                 }
-                MessageBox.Show("Usuario registrado con éxito");
+                MessageBox.Show("Producto registrado con éxito");
                 dgvProductos.Rows.Clear();
                 cargarGridview();
                 limpiardatos();
@@ -187,7 +187,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo Salio Mal, intente de nuevo. ");
+                MessageBox.Show("Algo Salio Mal, intente de nuevo... " + ex.ToString());
             }
         }
 
@@ -211,13 +211,8 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal, intente de nuevo");
+                MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
             }
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
 
         private void btnNuevaCategoria_Click(object sender, EventArgs e)
@@ -236,6 +231,11 @@ namespace ProyectoSICOVE.Formularios
             {
                 WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void btnCerrar1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

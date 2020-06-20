@@ -86,7 +86,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... " + ex.ToString());
             }
         }
 
@@ -111,7 +111,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... " + ex.ToString());
             }
 
         }
@@ -143,7 +143,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... " + ex.ToString());
             }
         }
 
@@ -167,18 +167,13 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... " + ex.ToString());
             }
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnxCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

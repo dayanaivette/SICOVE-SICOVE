@@ -43,6 +43,7 @@ namespace ProyectoSICOVE.Formularios
                                 //se filtra la busqueda por el nombre de producto
                                  where tb_Productos.Nombre.Contains(nombre)
 
+                                 //selecciona los nomre de las columnas que mostrara
                                  select new
                                  {
                                      Codigo = tb_Inventarios.IdInventario,

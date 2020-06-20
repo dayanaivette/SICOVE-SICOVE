@@ -79,7 +79,7 @@ namespace ProyectoSICOVE.Formularios
             btnEliminar.Enabled = true;
             btnEditar.Enabled = true;
 
-            btnNuevoUsuario.Enabled = false;
+            btnNuevoUsuario.Enabled = true;
 
             limpiartxt();
             cargardatos();
@@ -109,7 +109,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... Intente de nuevo" + ex.ToString());
             }
         }
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +134,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
             }
         }
         private void btnEditar_Click_1(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace ProyectoSICOVE.Formularios
                     db.Entry(empleados).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
-                MessageBox.Show("El Cliente se ha Actualizado con éxito");
+                MessageBox.Show("El Empleado se ha Actualizado con éxito");
                 dgvEmpleados.Rows.Clear();
                 cargardatos();
                 limpiartxt();
@@ -165,7 +165,7 @@ namespace ProyectoSICOVE.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo salio mal... Intente de nuevo");
+                MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
             }
         }
 
@@ -182,7 +182,7 @@ namespace ProyectoSICOVE.Formularios
                     db.tb_Empleados.Remove(empleados);
                     db.SaveChanges();
                 }
-                MessageBox.Show("El Cliente se ha Eliminado con éxito");
+                MessageBox.Show("El Empleado se ha Eliminado con éxito");
                 dgvEmpleados.Rows.Clear();
                 cargardatos();
                 limpiartxt();
@@ -212,7 +212,8 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
-
+            frmUsuarios usuarios = new frmUsuarios();
+            usuarios.ShowDialog();
         }
     }
 }

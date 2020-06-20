@@ -162,11 +162,6 @@ namespace ProyectoSICOVE.Formularios
             
         }
 
-        //private void btnCerrar_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-        //}
-
         private void btnCerrar1_Click(object sender, EventArgs e)
         {
             this.Hide();

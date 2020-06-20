@@ -93,6 +93,7 @@
             // 
             this.txtNunFac.BackColor = System.Drawing.Color.Silver;
             this.txtNunFac.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNunFac.Enabled = false;
             this.txtNunFac.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNunFac.ForeColor = System.Drawing.Color.Black;
             this.txtNunFac.Location = new System.Drawing.Point(132, 97);
@@ -348,7 +349,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(537, 531);
+            this.label13.Location = new System.Drawing.Point(646, 531);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(123, 25);
             this.label13.TabIndex = 26;
@@ -368,7 +369,7 @@
             // 
             // dgvCompras
             // 
-            this.dgvCompras.AllowUserToDeleteRows = false;
+            this.dgvCompras.AllowUserToAddRows = false;
             this.dgvCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCompras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
             this.dgvCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -403,7 +404,7 @@
             this.dgvCompras.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCompras.Enabled = false;
             this.dgvCompras.EnableHeadersVisualStyles = false;
-            this.dgvCompras.Location = new System.Drawing.Point(27, 318);
+            this.dgvCompras.Location = new System.Drawing.Point(12, 318);
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -415,7 +416,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCompras.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvCompras.Size = new System.Drawing.Size(876, 197);
+            this.dgvCompras.Size = new System.Drawing.Size(904, 197);
             this.dgvCompras.TabIndex = 28;
             this.dgvCompras.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvCompras_RowsRemoved);
             // 
@@ -498,7 +499,7 @@
             this.txtTotalFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotalFinal.Enabled = false;
             this.txtTotalFinal.Font = new System.Drawing.Font("Lucida Sans Typewriter", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalFinal.Location = new System.Drawing.Point(666, 523);
+            this.txtTotalFinal.Location = new System.Drawing.Point(787, 524);
             this.txtTotalFinal.Multiline = true;
             this.txtTotalFinal.Name = "txtTotalFinal";
             this.txtTotalFinal.Size = new System.Drawing.Size(128, 47);
@@ -605,9 +606,9 @@
             this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(240, 50);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(360, 31);
+            this.label15.Size = new System.Drawing.Size(378, 31);
             this.label15.TabIndex = 38;
-            this.label15.Text = "REGISTRO NUEVA COMPRA";
+            this.label15.Text = "REGISTRAR NUEVA COMPRA";
             // 
             // pictureBox1
             // 
@@ -618,7 +619,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 39;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // cmbProveedor
             // 
@@ -669,6 +669,7 @@
             this.btnMinimizar.Size = new System.Drawing.Size(28, 23);
             this.btnMinimizar.TabIndex = 21;
             this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // txtSubTotal
             // 
@@ -712,6 +713,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
             this.ClientSize = new System.Drawing.Size(927, 577);
             this.Controls.Add(this.txtIdCategoria);
