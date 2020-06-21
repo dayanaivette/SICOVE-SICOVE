@@ -73,43 +73,89 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            BorrarValidacion();
+            if (ValidarEmpelado())
+            {
+                try
+                {
 
-            groupBox1.Enabled = true;
-            btnGuardar.Enabled = true;
-            btnEliminar.Enabled = true;
-            btnEditar.Enabled = true;
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    btnEditar.Enabled = true;
 
-            btnNuevoUsuario.Enabled = true;
+                    btnNuevoUsuario.Enabled = true;
 
-            limpiartxt();
-            cargardatos();
+                    limpiartxt();
+                    cargardatos();
+                }
+                catch(Exception ex)
+                {
+                    ex.ToString();
+                }
+            }
         }
-
+        private bool ValidarEmpelado()
+        {
+            bool ok = false;
+            if (txtNombre.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
+            }
+            if (txtDireccion.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtDireccion, "Ingrese una Dirección");
+            }
+            if (txtCelular.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtCelular, "Ingrese un Celular");
+            }
+            if (txtDUI.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtDUI, "Ingrese un DUI");
+            }
+            return ok;
+        }
+        private void BorrarValidacion()
+        {
+            errorProvider1.SetError(txtNombre, "");
+            errorProvider1.SetError(txtDireccion, "");
+            errorProvider1.SetError(txtCelular, "");
+            errorProvider1.SetError(txtDUI, "");
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarEmpelado())
             {
-
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    empleados.Nombre = txtNombre.Text;
-                    empleados.Direccion = txtDireccion.Text;
-                    empleados.Celular = txtCelular.Text;
-                    empleados.DUI = txtDUI.Text;
-                    empleados.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    db.tb_Empleados.Add(empleados);
-                    db.SaveChanges();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        empleados.Nombre = txtNombre.Text;
+                        empleados.Direccion = txtDireccion.Text;
+                        empleados.Celular = txtCelular.Text;
+                        empleados.DUI = txtDUI.Text;
+                        empleados.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+
+                        db.tb_Empleados.Add(empleados);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Empleado se ha Registrado con éxito");
+                    dgvEmpleados.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
+
                 }
-                MessageBox.Show("El Empleado se ha Registrado con éxito");
-                dgvEmpleados.Rows.Clear();
-                cargardatos();
-                limpiartxt();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... Intente de nuevo" + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... Intente de nuevo" + ex.ToString());
+                }
             }
         }
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -139,57 +185,65 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarEmpelado())
             {
-
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    empleados = db.tb_Empleados.Where(VerificarId => VerificarId.IdEmpleado == IdC).First();
-                    empleados.Nombre = txtNombre.Text;
-                    empleados.Direccion = txtDireccion.Text;
-                    empleados.Celular = txtCelular.Text;
-                    empleados.DUI = txtDUI.Text;
-                    empleados.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
-                    db.Entry(empleados).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                MessageBox.Show("El Empleado se ha Actualizado con éxito");
-                dgvEmpleados.Rows.Clear();
-                cargardatos();
-                limpiartxt();
 
-                btnGuardar.Enabled = true;
-                btnNuevo.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        empleados = db.tb_Empleados.Where(VerificarId => VerificarId.IdEmpleado == IdC).First();
+                        empleados.Nombre = txtNombre.Text;
+                        empleados.Direccion = txtDireccion.Text;
+                        empleados.Celular = txtCelular.Text;
+                        empleados.DUI = txtDUI.Text;
+                        empleados.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        db.Entry(empleados).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Empleado se ha Actualizado con éxito");
+                    dgvEmpleados.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
+
+                    btnGuardar.Enabled = true;
+                    btnNuevo.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
+                }
             }
         }
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarEmpelado())
             {
-
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
 
-                    empleados = db.tb_Empleados.Find(int.Parse(Id));
-                    db.tb_Empleados.Remove(empleados);
-                    db.SaveChanges();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvEmpleados.CurrentRow.Cells[0].Value.ToString();
+
+                        empleados = db.tb_Empleados.Find(int.Parse(Id));
+                        db.tb_Empleados.Remove(empleados);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Empleado se ha Eliminado con éxito");
+                    dgvEmpleados.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
                 }
-                MessageBox.Show("El Empleado se ha Eliminado con éxito");
-                dgvEmpleados.Rows.Clear();
-                cargardatos();
-                limpiartxt();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
+                }
             }
         }
 
@@ -214,6 +268,19 @@ namespace ProyectoSICOVE.Formularios
         {
             frmUsuarios usuarios = new frmUsuarios();
             usuarios.ShowDialog();
+        }
+
+        private void txtCelular_Validating(object sender, CancelEventArgs e)
+        {
+            int num;
+            if (int.TryParse(txtCelular.Text, out num))
+            {
+                errorProvider1.SetError(txtCelular, "Ingrese el valor en números");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCelular, "");
+            }
         }
     }
 }

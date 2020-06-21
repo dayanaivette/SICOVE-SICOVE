@@ -203,7 +203,7 @@ namespace ProyectoSICOVE.Formularios
         }
         void limpiarVenta()
         {
-            txtNunFac.Clear();
+           // txtNunFac.Clear();
             //dtpFechaReg.InitializeLifetimeService();
             cmbFormaPago.Text = "Seleccione";
             cmbProveedor.Text = "Seleccione";

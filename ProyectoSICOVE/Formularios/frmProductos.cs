@@ -89,53 +89,85 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarProductos())
             {
+                try
+                {
 
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnEliminar.Enabled = true;
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnEliminar.Enabled = true;
 
-                btnNuevo.Enabled = false;
+                    btnNuevo.Enabled = false;
 
-                dgvProductos.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
+                    dgvProductos.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
+                }
             }
-            catch (Exception ex)
+        }
+
+        private bool validarProductos()
+        {
+            bool ok = true;
+
+            if (txtNombre.Text == "")
             {
-                MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
+                ok = false;
+                errorProvider1.SetError(txtNombre, "Ingrese un Producto");
             }
+
+            if (cmbCategoria.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(cmbCategoria, "Ingrese una Categoria");
+            }
+            return ok;
+        }
+
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(txtNombre, "");
+            errorProvider1.SetError(cmbCategoria, "");
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarProductos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    productos.Nombre = txtNombre.Text;
-                    productos.Detalle = txtDetalle.Text;
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        productos.Nombre = txtNombre.Text;
+                        productos.Detalle = txtDetalle.Text;
 
-                    productos.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        productos.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    String comboCategoria = cmbCategoria.SelectedValue.ToString();
-                    productos.IdCategoria = Convert.ToInt32(comboCategoria);
+                        String comboCategoria = cmbCategoria.SelectedValue.ToString();
+                        productos.IdCategoria = Convert.ToInt32(comboCategoria);
 
-                    db.tb_Productos.Add(productos);
-                    db.SaveChanges();
+                        db.tb_Productos.Add(productos);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Producto registrado con éxito");
+                    dgvProductos.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
                 }
-                MessageBox.Show("Producto registrado con éxito");
-                dgvProductos.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
 
         }
@@ -157,61 +189,69 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarProductos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    productos = db.tb_Productos.Where(VerificarId => VerificarId.IdProducto == IdC).First();
-                    productos.Nombre = txtNombre.Text;
-                    productos.Detalle = txtDetalle.Text;
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        productos = db.tb_Productos.Where(VerificarId => VerificarId.IdProducto == IdC).First();
+                        productos.Nombre = txtNombre.Text;
+                        productos.Detalle = txtDetalle.Text;
 
-                    productos.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        productos.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    String comboCategoria = cmbCategoria.SelectedValue.ToString();
-                    productos.IdCategoria = Convert.ToInt32(comboCategoria);
+                        String comboCategoria = cmbCategoria.SelectedValue.ToString();
+                        productos.IdCategoria = Convert.ToInt32(comboCategoria);
 
 
-                    db.Entry(productos).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                        db.Entry(productos).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Se Actualizo con éxito");
+                    dgvProductos.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
+
+                    btnGuardar.Enabled = true;
+                    btnNuevo.Enabled = true;
                 }
-                MessageBox.Show("Se Actualizo con éxito");
-                dgvProductos.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-
-                btnGuardar.Enabled = true;
-                btnNuevo.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo Salio Mal, intente de nuevo... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo Salio Mal, intente de nuevo... " + ex.ToString());
+                }
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarProductos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvProductos.CurrentRow.Cells[0].Value.ToString();
 
-                    productos = db.tb_Productos.Find(int.Parse(Id));
-                    db.tb_Productos.Remove(productos);
-                    db.SaveChanges();
+                        productos = db.tb_Productos.Find(int.Parse(Id));
+                        db.tb_Productos.Remove(productos);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El registro se eliminó con éxito");
+                    dgvProductos.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
                 }
-                MessageBox.Show("El registro se eliminó con éxito");
-                dgvProductos.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
+                }
             }
         }
 

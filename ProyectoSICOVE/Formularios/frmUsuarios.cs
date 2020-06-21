@@ -103,36 +103,74 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
+        private bool validarUsuario()
+        {
+            bool ok = true;
+
+            if (txtUsuario.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtUsuario, "Ingrese un Usuario");
+            }
+            if (txtClave.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtClave, "Ingrese una Clave");
+            }
+            if (cmbEmpleado.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(cmbEmpleado, "Seleccione un Empleado");
+            }
+            if (cmbRol.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(cmbRol, "Seleccione un Rol");
+            }
+            return ok;
+        }
+
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(txtUsuario, "");
+            errorProvider1.SetError(txtClave, "");
+            errorProvider1.SetError(cmbEmpleado, "");
+            errorProvider1.SetError(cmbRol, "");
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarUsuario())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    user.Usuario = txtUsuario.Text;
-                    user.Clave = txtClave.Text;
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        user.Usuario = txtUsuario.Text;
+                        user.Clave = txtClave.Text;
 
-                    user.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        user.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    String comboRol = cmbRol.SelectedValue.ToString();
-                    user.IdRol = Convert.ToInt32(comboRol);
+                        String comboRol = cmbRol.SelectedValue.ToString();
+                        user.IdRol = Convert.ToInt32(comboRol);
 
-                    String comboEmpleado = cmbEmpleado.SelectedValue.ToString();
-                    user.IdEmpleado = Convert.ToInt32(comboEmpleado);
+                        String comboEmpleado = cmbEmpleado.SelectedValue.ToString();
+                        user.IdEmpleado = Convert.ToInt32(comboEmpleado);
 
 
-                    db.tb_Usuarios.Add(user);
-                    db.SaveChanges();
+                        db.tb_Usuarios.Add(user);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Usuario registrado con éxito");
+                    dgvUsuarios.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
                 }
-                MessageBox.Show("Usuario registrado con éxito");
-                dgvUsuarios.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
             
         }
@@ -155,88 +193,98 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            
-            try
+            borrarValidacion();
+            if (validarUsuario())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvUsuarios.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    user = db.tb_Usuarios.Where(VerificarId => VerificarId.IdUsuario == IdC).First();
-                    user.Usuario = txtUsuario.Text;
-                    user.Clave = txtClave.Text;
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvUsuarios.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        user = db.tb_Usuarios.Where(VerificarId => VerificarId.IdUsuario == IdC).First();
+                        user.Usuario = txtUsuario.Text;
+                        user.Clave = txtClave.Text;
 
-                    String comboRol = cmbRol.SelectedValue.ToString();
-                    user.IdRol = Convert.ToInt32(comboRol);
+                        String comboRol = cmbRol.SelectedValue.ToString();
+                        user.IdRol = Convert.ToInt32(comboRol);
 
-                    String comboEmpleado = cmbEmpleado.SelectedValue.ToString();
-                    user.IdEmpleado = Convert.ToInt32(comboEmpleado);
+                        String comboEmpleado = cmbEmpleado.SelectedValue.ToString();
+                        user.IdEmpleado = Convert.ToInt32(comboEmpleado);
 
-                    user.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        user.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                        db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Se Actualizo con éxito");
+                    dgvUsuarios.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
+
+                    btnGuardar.Enabled = true;
+                    btnNuevo.Enabled = true;
                 }
-                MessageBox.Show("Se Actualizo con éxito");
-                dgvUsuarios.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-
-                btnGuardar.Enabled = true;
-                btnNuevo.Enabled = true;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo Salio Mal... " + ex.ToString());
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Algo Salio Mal... " + ex.ToString());
-            }
-            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarUsuario())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvUsuarios.CurrentRow.Cells[0].Value.ToString();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvUsuarios.CurrentRow.Cells[0].Value.ToString();
 
-                    user = db.tb_Usuarios.Find(int.Parse(Id));
-                    db.tb_Usuarios.Remove(user);
-                    db.SaveChanges();
+                        user = db.tb_Usuarios.Find(int.Parse(Id));
+                        db.tb_Usuarios.Remove(user);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El registro se eliminó con éxito");
+                    dgvUsuarios.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
                 }
-                MessageBox.Show("El registro se eliminó con éxito");
-                dgvUsuarios.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Algo salio mal, intente de nuevo");
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal, intente de nuevo");
+                }
             }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarUsuario())
             {
+                try
+                {
 
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnEliminar.Enabled = true;
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnEliminar.Enabled = true;
 
-                btnNuevo.Enabled = false;
+                    btnNuevo.Enabled = false;
 
-                dgvUsuarios.Rows.Clear();
-                cargarGridview();
-                limpiardatos();
-                CargarCombo();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                    dgvUsuarios.Rows.Clear();
+                    cargarGridview();
+                    limpiardatos();
+                    CargarCombo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 

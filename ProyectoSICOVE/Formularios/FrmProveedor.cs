@@ -64,29 +64,66 @@ namespace ProyectoSICOVE.Formularios
 
             txtNombre.Focus();
         }
+
+        private bool ValidarProveedor()
+        {
+            bool ok = false;
+            if (txtNombre.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
+            }
+            if (txtDireccion.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtDireccion, "Ingrese una Dirección");
+            }
+            if (txtCelular.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtCelular, "Ingrese un Celular");
+            }
+            if (txtDUI.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtDUI, "Ingrese un DUI");
+            }
+            return ok;
+        }
+        private void BorrarValidacion()
+        {
+            errorProvider1.SetError(txtNombre, "");
+            errorProvider1.SetError(txtDireccion, "");
+            errorProvider1.SetError(txtCelular, "");
+            errorProvider1.SetError(txtDUI, "");
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarProveedor())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    proveedores.Nombre = txtNombre.Text;
-                    proveedores.Direccion = txtDireccion.Text;
-                    proveedores.Celular = txtCelular.Text;
-                    proveedores.DUI = txtDUI.Text;
-                    proveedores.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        proveedores.Nombre = txtNombre.Text;
+                        proveedores.Direccion = txtDireccion.Text;
+                        proveedores.Celular = txtCelular.Text;
+                        proveedores.DUI = txtDUI.Text;
+                        proveedores.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    db.tb_Proveedores.Add(proveedores);
-                    db.SaveChanges();
+                        db.tb_Proveedores.Add(proveedores);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Proveedor se ha Registrado con éxito");
+                    dgvProveedores.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
                 }
-                MessageBox.Show("El Proveedor se ha Registrado con éxito");
-                dgvProveedores.Rows.Clear();
-                cargardatos();
-                limpiartxt();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
@@ -118,56 +155,64 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarProveedor())
             {
-
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvProveedores.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    proveedores = db.tb_Proveedores.Where(VerificarId => VerificarId.IdProveedor == IdC).First();
-                    proveedores.Nombre = txtNombre.Text;
-                    proveedores.Direccion = txtDireccion.Text;
-                    proveedores.Celular = txtCelular.Text;
-                    proveedores.DUI = txtDUI.Text;
-                    proveedores.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
-                    db.Entry(proveedores).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                MessageBox.Show("El Proveedor se ha Actualizado con éxito");
-                dgvProveedores.Rows.Clear();
-                cargardatos();
-                limpiartxt();
 
-                btnGuardar.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvProveedores.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        proveedores = db.tb_Proveedores.Where(VerificarId => VerificarId.IdProveedor == IdC).First();
+                        proveedores.Nombre = txtNombre.Text;
+                        proveedores.Direccion = txtDireccion.Text;
+                        proveedores.Celular = txtCelular.Text;
+                        proveedores.DUI = txtDUI.Text;
+                        proveedores.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        db.Entry(proveedores).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Proveedor se ha Actualizado con éxito");
+                    dgvProveedores.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
+
+                    btnGuardar.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarProveedor())
             {
-
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvProveedores.CurrentRow.Cells[0].Value.ToString();
 
-                    proveedores = db.tb_Proveedores.Find(int.Parse(Id));
-                    db.tb_Proveedores.Remove(proveedores);
-                    db.SaveChanges();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvProveedores.CurrentRow.Cells[0].Value.ToString();
+
+                        proveedores = db.tb_Proveedores.Find(int.Parse(Id));
+                        db.tb_Proveedores.Remove(proveedores);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Proveedor se ha Eliminado con éxito");
+                    dgvProveedores.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
                 }
-                MessageBox.Show("El Proveedor se ha Eliminado con éxito");
-                dgvProveedores.Rows.Clear();
-                cargardatos();
-                limpiartxt();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
@@ -178,20 +223,24 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            BorrarValidacion();
+            if (ValidarProveedor())
             {
+                try
+                {
 
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnEliminar.Enabled = true;
-                dgvProveedores.Rows.Clear();
-                cargardatos();
-                limpiartxt();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... Intente de nuevo" + ex.ToString() + MessageBoxIcon.Error);
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    dgvProveedores.Rows.Clear();
+                    cargardatos();
+                    limpiartxt();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
@@ -204,6 +253,19 @@ namespace ProyectoSICOVE.Formularios
             else if (WindowState == FormWindowState.Minimized)
             {
                 WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void txtCelular_Validating(object sender, CancelEventArgs e)
+        {
+            int num;
+            if (int.TryParse(txtCelular.Text, out num))
+            {
+                errorProvider1.SetError(txtCelular, "Ingrese el valor en números");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCelular, "");
             }
         }
     }

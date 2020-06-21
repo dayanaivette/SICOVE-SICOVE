@@ -46,29 +46,49 @@ namespace ProyectoSICOVE.Formularios
             {
                 MessageBox.Show("Algo salio mal " + ex.ToString());
             }
-
-           
         }
+
+        private bool validarRol()
+        {
+            bool ok = true;
+            if (txtRol.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtRol, "Ingrese una Categoria");
+            }
+            return ok;
+        }
+
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(txtRol, "");
+        }
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarRol())
             {
-                using (SICOVE1Entities2  db = new SICOVE1Entities2())
+                try
                 {
-                    roles.Nombre = txtRol.Text;
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        roles.Nombre = txtRol.Text;
 
-                    db.tb_Roles.Add(roles);
-                    db.SaveChanges();
+                        db.tb_Roles.Add(roles);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Rol se ha Registrado con éxito");
+                    dgvRoles.Rows.Clear();
+                    cargardatos();
+                    txtRol.Clear();
+                    txtRol.Focus();
                 }
-                MessageBox.Show("El Rol se ha Registrado con éxito");
-                dgvRoles.Rows.Clear();
-                cargardatos();
-                txtRol.Clear();
-                txtRol.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
             
         }
@@ -84,54 +104,62 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarRol())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvRoles.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    roles = db.tb_Roles.Where(VerificarId => VerificarId.IdRol == IdC).First();
-                    roles.Nombre = txtRol.Text;
-                    db.Entry(roles).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvRoles.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        roles = db.tb_Roles.Where(VerificarId => VerificarId.IdRol == IdC).First();
+                        roles.Nombre = txtRol.Text;
+                        db.Entry(roles).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Rol se ha Actuliazado con éxito");
+                    dgvRoles.Rows.Clear();
+                    cargardatos();
+                    txtRol.Clear();
+                    txtRol.Focus();
+                    btnGuardar.Enabled = true;
+                    btnNuevo.Enabled = false;
                 }
-                MessageBox.Show("El Rol se ha Actuliazado con éxito");
-                dgvRoles.Rows.Clear();
-                cargardatos();
-                txtRol.Clear();
-                txtRol.Focus();
-                btnGuardar.Enabled = true;
-                btnNuevo.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
             
         }
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarRol())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvRoles.CurrentRow.Cells[0].Value.ToString();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvRoles.CurrentRow.Cells[0].Value.ToString();
 
-                    roles = db.tb_Roles.Find(int.Parse(Id));
-                    db.tb_Roles.Remove(roles);
-                    db.SaveChanges();
+                        roles = db.tb_Roles.Find(int.Parse(Id));
+                        db.tb_Roles.Remove(roles);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("El Rol se ha Eliminado con éxito");
+                    dgvRoles.Rows.Clear();
+                    cargardatos();
+                    txtRol.Clear();
+                    txtRol.Focus();
+                    btnNuevo.Enabled = true;
                 }
-                MessageBox.Show("El Rol se ha Eliminado con éxito");
-                dgvRoles.Rows.Clear();
-                cargardatos();
-                txtRol.Clear();
-                txtRol.Focus();
-                btnNuevo.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
             
         }
@@ -143,22 +171,26 @@ namespace ProyectoSICOVE.Formularios
 
         private void brnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarRol())
             {
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnEminiar.Enabled = true;
-                btnNuevo.Enabled = false;
+                try
+                {
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnEminiar.Enabled = true;
+                    btnNuevo.Enabled = false;
 
-                dgvRoles.Rows.Clear();
-                cargardatos();
-                txtRol.Clear();
-                txtRol.Focus();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                    dgvRoles.Rows.Clear();
+                    cargardatos();
+                    txtRol.Clear();
+                    txtRol.Focus();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
         }
 

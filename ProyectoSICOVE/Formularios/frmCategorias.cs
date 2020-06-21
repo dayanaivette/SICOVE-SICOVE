@@ -25,7 +25,7 @@ namespace ProyectoSICOVE.Formularios
             btnEditar.Enabled = false;
             btnEminiar.Enabled = false;
             cargardatos();
-            
+
         }
 
         void cargardatos()
@@ -48,53 +48,75 @@ namespace ProyectoSICOVE.Formularios
             {
                 MessageBox.Show("Algo salio mal " + ex.ToString());
             }
-            
+
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarCategoria())
             {
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEditar.Enabled = true;
-                btnEminiar.Enabled = true;
-                btnNuevo.Enabled = false;
+                try
+                {
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    btnEminiar.Enabled = true;
+                    btnNuevo.Enabled = false;
 
-                dgvCategoria.Rows.Clear();
-                cargardatos();
-                txtCategoria.Clear();
-                txtCategoria.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                    dgvCategoria.Rows.Clear();
+                    cargardatos();
+                    txtCategoria.Clear();
+                    txtCategoria.Focus();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
         }
+        private bool validarCategoria()
+        {
+            bool ok = true;
+            if (txtCategoria.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtCategoria, "Ingrese una Categoria");
+            }
+            return ok;
+        }
 
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(txtCategoria, "");
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarCategoria())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    categorias.Nombre = txtCategoria.Text;
-                    categorias.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        categorias.Nombre = txtCategoria.Text;
+                        categorias.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
-                    db.tb_Categorias.Add(categorias);
-                    db.SaveChanges();
+                        db.tb_Categorias.Add(categorias);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("La categoría se ha Registrado con éxito");
+                    dgvCategoria.Rows.Clear();
+                    cargardatos();
+                    txtCategoria.Clear();
+                    txtCategoria.Focus();
                 }
-                MessageBox.Show("La categoría se ha Registrado con éxito");
-                dgvCategoria.Rows.Clear();
-                cargardatos();
-                txtCategoria.Clear();
-                txtCategoria.Focus();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
-            }
-           
+
         }
         //llevar los datos de la gris al los txt
         private void dgvCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -110,56 +132,64 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarCategoria())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvCategoria.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    categorias = db.tb_Categorias.Where(VerificarId => VerificarId.IdCategoria == IdC).First();
-                    categorias.Nombre = txtCategoria.Text;
-                    categorias.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
-                    db.Entry(categorias).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                MessageBox.Show("La categoría se ha Actualizo con éxito");
-                dgvCategoria.Rows.Clear();
-                cargardatos();
-                txtCategoria.Clear();
-                txtCategoria.Focus();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvCategoria.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        categorias = db.tb_Categorias.Where(VerificarId => VerificarId.IdCategoria == IdC).First();
+                        categorias.Nombre = txtCategoria.Text;
+                        categorias.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
+                        db.Entry(categorias).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("La categoría se ha Actualizo con éxito");
+                    dgvCategoria.Rows.Clear();
+                    cargardatos();
+                    txtCategoria.Clear();
+                    txtCategoria.Focus();
 
-                btnGuardar.Enabled = true;
-                btnNuevo.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
+                    btnGuardar.Enabled = true;
+                    btnNuevo.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
         }
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarCategoria())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvCategoria.CurrentRow.Cells[0].Value.ToString();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvCategoria.CurrentRow.Cells[0].Value.ToString();
 
-                    categorias = db.tb_Categorias.Find(int.Parse(Id));
-                    db.tb_Categorias.Remove(categorias);
-                    db.SaveChanges();
+                        categorias = db.tb_Categorias.Find(int.Parse(Id));
+                        db.tb_Categorias.Remove(categorias);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("La categoría se ha Eliminado con éxito");
+                    dgvCategoria.Rows.Clear();
+                    cargardatos();
+                    txtCategoria.Clear();
+                    txtCategoria.Focus();
                 }
-                MessageBox.Show("La categoría se ha Eliminado con éxito");
-                dgvCategoria.Rows.Clear();
-                cargardatos();
-                txtCategoria.Clear();
-                txtCategoria.Focus();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal " + ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal " + ex.ToString());
-            }
-            
+
         }
 
         private void btnCerrar1_Click(object sender, EventArgs e)

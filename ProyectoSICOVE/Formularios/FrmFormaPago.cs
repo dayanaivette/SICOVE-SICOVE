@@ -48,34 +48,55 @@ namespace ProyectoSICOVE.Formularios
                 MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
             }
         }
+
+        private bool validarFPagos()
+        {
+            bool ok = true;
+            if (txtFPago.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtFPago, "Ingrese una Forma de pago");
+            }
+            return ok;
+        }
+
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(txtFPago, "");
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarFPagos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    if(txtFPago.Text == "")
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
                     {
-                        MessageBox.Show("Debe dijitar una forma de pago");
-                    }
-                    else
-                    {
-                        formaPago.Nombre = txtFPago.Text;
+                        if (txtFPago.Text == "")
+                        {
+                            MessageBox.Show("Debe dijitar una forma de pago");
+                        }
+                        else
+                        {
+                            formaPago.Nombre = txtFPago.Text;
 
-                        db.tb_FormaPago.Add(formaPago);
-                        db.SaveChanges();
+                            db.tb_FormaPago.Add(formaPago);
+                            db.SaveChanges();
+                        }
                     }
+                    MessageBox.Show("La Forma de Pago se ha registrado con éxito");
+                    dgvFPagos.Rows.Clear();
+                    cargardatos();
+                    txtFPago.Clear();
+                    txtFPago.Focus();
                 }
-                MessageBox.Show("La Forma de Pago se ha registrado con éxito");
-                dgvFPagos.Rows.Clear();
-                cargardatos();
-                txtFPago.Clear();
-                txtFPago.Focus();
-            }
-            catch(Exception ex)
-            {
-                //System.Windows.Forms.MessageBox.Show("Error: " + ex.Message, "FormaPago");
-               MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                catch (Exception ex)
+                {
+                    //System.Windows.Forms.MessageBox.Show("Error: " + ex.Message, "FormaPago");
+                    MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                }
             }
            
         }
@@ -89,55 +110,63 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarFPagos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvFPagos.CurrentRow.Cells[0].Value.ToString();
-                    int IdC = int.Parse(Id);
-                    formaPago = db.tb_FormaPago.Where(VerificarId => VerificarId.IdFormaPago == IdC).First();
-                    formaPago.Nombre = txtFPago.Text;
-                    db.Entry(formaPago).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                MessageBox.Show("La Forma de Pago se ha Actualizado con éxito");
-                dgvFPagos.Rows.Clear();
-                cargardatos();
-                txtFPago.Clear();
-                txtFPago.Focus();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvFPagos.CurrentRow.Cells[0].Value.ToString();
+                        int IdC = int.Parse(Id);
+                        formaPago = db.tb_FormaPago.Where(VerificarId => VerificarId.IdFormaPago == IdC).First();
+                        formaPago.Nombre = txtFPago.Text;
+                        db.Entry(formaPago).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("La Forma de Pago se ha Actualizado con éxito");
+                    dgvFPagos.Rows.Clear();
+                    cargardatos();
+                    txtFPago.Clear();
+                    txtFPago.Focus();
 
-                btnGuardar.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                    btnGuardar.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                }
             }
             
         }
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarFPagos())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-                    string Id = dgvFPagos.CurrentRow.Cells[0].Value.ToString();
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                    {
+                        string Id = dgvFPagos.CurrentRow.Cells[0].Value.ToString();
 
-                    formaPago = db.tb_FormaPago.Find(int.Parse(Id));
-                    db.tb_FormaPago.Remove(formaPago);
-                    db.SaveChanges();
+                        formaPago = db.tb_FormaPago.Find(int.Parse(Id));
+                        db.tb_FormaPago.Remove(formaPago);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("La Forma de Pago se ha Eliminado con éxito");
+                    dgvFPagos.Rows.Clear();
+                    cargardatos();
+                    txtFPago.Clear();
+                    txtFPago.Focus();
+
+                    btnGuardar.Enabled = true;
                 }
-                MessageBox.Show("La Forma de Pago se ha Eliminado con éxito");
-                dgvFPagos.Rows.Clear();
-                cargardatos();
-                txtFPago.Clear();
-                txtFPago.Focus();
-
-                btnGuardar.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                catch (Exception ex)
+                {
+                    MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
+                }
             }
             
         }
@@ -149,22 +178,26 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacion();
+            if (validarFPagos())
             {
+                try
+                {
 
-                groupBox1.Enabled = true;
-                btnGuardar.Enabled = true;
-                btnEminiar.Enabled = true;
-                btnEditar.Enabled = true;
-                dgvFPagos.Rows.Clear();
-                cargardatos();
-                txtFPago.Clear();
+                    groupBox1.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnEminiar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    dgvFPagos.Rows.Clear();
+                    cargardatos();
+                    txtFPago.Clear();
 
-                btnNuevo.Enabled = false;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                    btnNuevo.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
