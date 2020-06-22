@@ -235,9 +235,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarUsuario())
-            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -258,14 +255,12 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal, intente de nuevo");
                 }
-            }
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarUsuario())
-            {
+           
                 try
                 {
 
@@ -285,7 +280,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnCerrar1_Click(object sender, EventArgs e)

@@ -53,9 +53,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarCategoria())
-            {
                 try
                 {
                     groupBox1.Enabled = true;
@@ -73,7 +70,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            }
+            
         }
         private bool validarCategoria()
         {
@@ -165,9 +162,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarCategoria())
-            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -188,7 +182,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            }
+            
 
         }
 

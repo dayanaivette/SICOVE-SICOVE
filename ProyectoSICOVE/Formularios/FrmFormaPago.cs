@@ -142,9 +142,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarFPagos())
-            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -167,7 +164,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
                 }
-            }
+            
             
         }
 
@@ -178,9 +175,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarFPagos())
-            {
                 try
                 {
 
@@ -198,7 +192,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnCerrar_Click_1(object sender, EventArgs e)

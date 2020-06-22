@@ -136,9 +136,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarRol())
-            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -160,7 +157,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            }
+            
             
         }
 
@@ -171,9 +168,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void brnNuevo_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarRol())
-            {
                 try
                 {
                     groupBox1.Enabled = true;
@@ -191,7 +185,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

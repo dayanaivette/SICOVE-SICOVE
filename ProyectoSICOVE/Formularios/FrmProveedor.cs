@@ -190,9 +190,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarProveedor())
-            {
                 try
                 {
 
@@ -213,7 +210,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnxCerrar_Click(object sender, EventArgs e)
@@ -223,9 +220,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarProveedor())
-            {
                 try
                 {
 
@@ -241,7 +235,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

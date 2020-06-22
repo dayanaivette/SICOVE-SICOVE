@@ -73,9 +73,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarEmpelado())
-            {
                 try
                 {
 
@@ -93,7 +90,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     ex.ToString();
                 }
-            }
+            
         }
         private bool ValidarEmpelado()
         {
@@ -221,9 +218,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarEmpelado())
-            {
                 try
                 {
 
@@ -244,7 +238,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnCerrar_Click_1(object sender, EventArgs e)

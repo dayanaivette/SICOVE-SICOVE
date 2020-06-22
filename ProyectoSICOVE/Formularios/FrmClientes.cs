@@ -204,9 +204,6 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarCliente())
-            {
                 try
                 {
 
@@ -227,14 +224,11 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            }
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarCliente())
-            {
                 groupBox1.Enabled = true;
                 btnGuardar.Enabled = true;
                 btnEditar.Enabled = true;
@@ -242,7 +236,7 @@ namespace ProyectoSICOVE.Formularios
                 dgvClientes.Rows.Clear();
                 cargardatos();
                 limpiartxt();
-            }
+            
 
         }
 
