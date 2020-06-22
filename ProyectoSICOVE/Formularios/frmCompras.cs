@@ -142,37 +142,65 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
+        private bool validarDetalleCompra()
+        {
+            bool ok = true;
+
+            if (txtPrecio.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtPrecio, "Ingrese un precio");
+            }
+            if (txtCantidad.Text == "")
+            {
+                ok = false;
+                errorProvider1.SetError(txtCantidad, "Ingrese una cantidad");
+            }
+
+            return ok;
+        }
+
+        private void borrarValidacionDetalleCompra()
+        {
+            errorProvider1.SetError(txtPrecio, "");
+            errorProvider1.SetError(txtCantidad, "");
+        }
+
         //agregando el detalle del producto a la tabla, el cual sera el detalle de la compra 
         private void btnAgregarProd_Click(object sender, EventArgs e)
         {
-            try
+            borrarValidacionDetalleCompra();
+            if (validarDetalleCompra())
             {
+                try
+                {
 
-                calculoSubTotal();
-                calculoTotal();
+                    calculoSubTotal();
+                    calculoTotal();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal ... " + ex.ToString());
+                }
+                dgvCompras.Rows.Add(txtCodProducto.Text, txtIdCategoria.Text, txtNombreProducto.Text, txtCategoriaProd.Text,
+                    txtPrecio.Text, txtCantidad.Text, txtSubTotal.Text, txtIVA.Text, txtTotal.Text);
+
+                //Calcula el valor total de la compra
+                calcularTotalFinal();
+                Limpiar();
+                txtBuscarProducto.Select();
+                txtCantidad.Text = "1";
+                //srive para refrescar la grid
+                dgvCompras.Refresh();
+                //selecciona la filla de la grid que se va agregando 
+                dgvCompras.ClearSelection();
+                //se ubica en la ultima fila insertada en la grid y genera el scroll
+                int obtenerUltimaFilas = dgvCompras.Rows.Count - 1;
+                dgvCompras.FirstDisplayedScrollingRowIndex = obtenerUltimaFilas;
+                dgvCompras.Rows[obtenerUltimaFilas].Selected = true;
+
+                txtBuscarProducto.Focus();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal ... " + ex.ToString());
-            }
-            dgvCompras.Rows.Add(txtCodProducto.Text, txtIdCategoria.Text, txtNombreProducto.Text, txtCategoriaProd.Text,
-                txtPrecio.Text, txtCantidad.Text, txtSubTotal.Text, txtIVA.Text, txtTotal.Text);
-
-            //Calcula el valor total de la compra
-            calcularTotalFinal();
-            Limpiar();
-            txtBuscarProducto.Select();
-            txtCantidad.Text = "1";
-            //srive para refrescar la grid
-            dgvCompras.Refresh();
-            //selecciona la filla de la grid que se va agregando 
-            dgvCompras.ClearSelection();
-            //se ubica en la ultima fila insertada en la grid y genera el scroll
-            int obtenerUltimaFilas = dgvCompras.Rows.Count - 1;
-            dgvCompras.FirstDisplayedScrollingRowIndex = obtenerUltimaFilas;
-            dgvCompras.Rows[obtenerUltimaFilas].Selected = true;
-
-            txtBuscarProducto.Focus();
         }
 
 
@@ -279,110 +307,138 @@ namespace ProyectoSICOVE.Formularios
                 intentos += 1;
             }
         }
+        //permite la valizadacion de campos, asignando un valor de mensaje para campo que no contiene nada
+        private bool validarCompra()
+        {
+            bool ok = true;
+
+            if (cmbProveedor.Text == "Seleccione")
+            {
+                ok = false;
+                errorProvider1.SetError(cmbProveedor, "Seleccione un cliente");
+            }
+
+            if (cmbFormaPago.Text == "Seleccione")
+            {
+                ok = false;
+                errorProvider1.SetError(cmbFormaPago, "Seleccione una forma de pago");
+            }
+
+            return ok;
+        }
+        //Elimina el mensaje error si este contiene informacion.
+        private void borrarValidacion()
+        {
+            errorProvider1.SetError(cmbProveedor, "");
+            errorProvider1.SetError(cmbFormaPago, "");
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int suma = 0;
-            int productoInventario = 0;
-            try
+
+            borrarValidacion();
+            if (validarCompra())
             {
-                using (SICOVE1Entities2 db = new SICOVE1Entities2())
+                try
                 {
-
-                    // se hacer el insert de la compra en la tabla de compras 
-                    String comboProveedor = cmbProveedor.SelectedValue.ToString();
-                    compras.IdProveedor = Convert.ToInt32(comboProveedor);
-
-                    String comboFPago = cmbFormaPago.SelectedValue.ToString();
-                    compras.IdFormaPago = Convert.ToInt32(comboFPago);
-
-                    compras.IdEmpleado = 1;
-                    compras.NumFac = Convert.ToInt32(txtNunFac.Text);
-                    compras.DetalleCompra = txtDetalleCompra.Text;
-                    compras.TotalCompra = Convert.ToDecimal(txtTotalFinal.Text);
-                    compras.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
-
-
-                    db.tb_Compras.Add(compras);
-                    db.SaveChanges();
-
-
-                    ///////////////////////////////////////////////////////////////////// Lilian Bonilla.
-                    //se hace el insert para la tabla detalle de la compra 
-
-                    tb_DetalleCompras detalleCompra = new tb_DetalleCompras();
-                    for (int i = 0; i < dgvCompras.RowCount; i++)
+                    using (SICOVE1Entities2 db = new SICOVE1Entities2())
                     {
-                        String idProducto = dgvCompras.Rows[i].Cells[0].Value.ToString();
-                        int IdProductoConvertidos = Convert.ToInt32(idProducto);
 
-                        String idCategoria = dgvCompras.Rows[i].Cells[1].Value.ToString();
-                        int IdCategoriaConvertida = Convert.ToInt32(idCategoria);
+                        // se hacer el insert de la compra en la tabla de compras 
+                        String comboProveedor = cmbProveedor.SelectedValue.ToString();
+                        compras.IdProveedor = Convert.ToInt32(comboProveedor);
 
-                        String precio = dgvCompras.Rows[i].Cells[4].Value.ToString();
-                        decimal precioConvertidos = Convert.ToDecimal(precio);
+                        String comboFPago = cmbFormaPago.SelectedValue.ToString();
+                        compras.IdFormaPago = Convert.ToInt32(comboFPago);
 
-                        String cantidad = dgvCompras.Rows[i].Cells[5].Value.ToString();
-                        int cantidadConvertidos = Convert.ToInt32(cantidad);
-
-                        String SubTotal = dgvCompras.Rows[i].Cells[6].Value.ToString();
-                        decimal SubTotalConvertidos = Convert.ToDecimal(SubTotal);
-
-                        String IVA = dgvCompras.Rows[i].Cells[7].Value.ToString();
-                        decimal IVAConvertidos = Convert.ToDecimal(IVA);
-
-                        String total = dgvCompras.Rows[i].Cells[8].Value.ToString();
-                        decimal totalConvertidos = Convert.ToDecimal(total);
+                        compras.IdEmpleado = 1;
+                        compras.NumFac = Convert.ToInt32(txtNunFac.Text);
+                        compras.DetalleCompra = txtDetalleCompra.Text;
+                        compras.TotalCompra = Convert.ToDecimal(txtTotalFinal.Text);
+                        compras.FechaRegistro = Convert.ToDateTime(dtpFechaReg.Text);
 
 
-                        detalleCompra.IdCompra = Convert.ToInt32(txtNunFac.Text);
-
-                        detalleCompra.IdProducto = IdProductoConvertidos;
-                        detalleCompra.IdCategoria = IdCategoriaConvertida;
-                        detalleCompra.PrecioCompra = precioConvertidos;
-                        detalleCompra.Cantidad = cantidadConvertidos;
-                        detalleCompra.SubTotal = SubTotalConvertidos;
-                        detalleCompra.IVA = IVAConvertidos;
-                        detalleCompra.Total = totalConvertidos;
-
-                        
-
-                        var listaInventario = from inv in db.tb_Inventarios
-                                              from prod in db.tb_Productos
-                                              where prod.IdProducto == inv.IdProducto
-                                              select prod;
-
-                        foreach (var iterar in listaInventario)
-                        {
-                            tb_Productos productos = new tb_Productos();
-                            productos = iterar;
-                            
-                            int idInv = Int32.Parse(idProducto.ToString());
-                            inventarios = db.tb_Inventarios.Where(VerificarID => VerificarID.IdProducto == idInv).First();
-                            int sumarInventario = (Convert.ToInt32(cantidadConvertidos) / Convert.ToInt32(inventarios.Existencia));
-                            inventarios.Existencia = inventarios.Existencia + sumarInventario;
-                        }
-
-                        db.tb_DetalleCompras.Add(detalleCompra);
-                        db.tb_Inventarios.Add(inventarios);
+                        db.tb_Compras.Add(compras);
                         db.SaveChanges();
-                        //productoInventario = Convert.ToInt32(detalleCompra.IdProducto);
-                        //suma = detalleCompra.Cantidad;
+
+
+                        ///////////////////////////////////////////////////////////////////// Lilian Bonilla.
+                        //se hace el insert para la tabla detalle de la compra 
+
+                        tb_DetalleCompras detalleCompra = new tb_DetalleCompras();
+                        for (int i = 0; i < dgvCompras.RowCount; i++)
+                        {
+                            String idProducto = dgvCompras.Rows[i].Cells[0].Value.ToString();
+                            int IdProductoConvertidos = Convert.ToInt32(idProducto);
+
+                            String idCategoria = dgvCompras.Rows[i].Cells[1].Value.ToString();
+                            int IdCategoriaConvertida = Convert.ToInt32(idCategoria);
+
+                            String precio = dgvCompras.Rows[i].Cells[4].Value.ToString();
+                            decimal precioConvertidos = Convert.ToDecimal(precio);
+
+                            String cantidad = dgvCompras.Rows[i].Cells[5].Value.ToString();
+                            int cantidadConvertidos = Convert.ToInt32(cantidad);
+
+                            String SubTotal = dgvCompras.Rows[i].Cells[6].Value.ToString();
+                            decimal SubTotalConvertidos = Convert.ToDecimal(SubTotal);
+
+                            String IVA = dgvCompras.Rows[i].Cells[7].Value.ToString();
+                            decimal IVAConvertidos = Convert.ToDecimal(IVA);
+
+                            String total = dgvCompras.Rows[i].Cells[8].Value.ToString();
+                            decimal totalConvertidos = Convert.ToDecimal(total);
+
+
+                            detalleCompra.IdCompra = Convert.ToInt32(txtNunFac.Text);
+
+                            detalleCompra.IdProducto = IdProductoConvertidos;
+                            detalleCompra.IdCategoria = IdCategoriaConvertida;
+                            detalleCompra.PrecioCompra = precioConvertidos;
+                            detalleCompra.Cantidad = cantidadConvertidos;
+                            detalleCompra.SubTotal = SubTotalConvertidos;
+                            detalleCompra.IVA = IVAConvertidos;
+                            detalleCompra.Total = totalConvertidos;
+
+
+
+                            var listaInventario = from inv in db.tb_Inventarios
+                                                  from prod in db.tb_Productos
+                                                  where prod.IdProducto == inv.IdProducto
+                                                  select prod;
+
+                            foreach (var iterar in listaInventario)
+                            {
+                                tb_Productos productos = new tb_Productos();
+                                productos = iterar;
+
+                                int idInv = Int32.Parse(idProducto.ToString());
+                                inventarios = db.tb_Inventarios.Where(VerificarID => VerificarID.IdProducto == idInv).First();
+                                int sumarInventario = (Convert.ToInt32(cantidadConvertidos) / Convert.ToInt32(inventarios.Existencia));
+                                inventarios.Existencia = inventarios.Existencia + sumarInventario;
+                            }
+
+                            db.tb_DetalleCompras.Add(detalleCompra);
+                            db.tb_Inventarios.Add(inventarios);
+                            db.SaveChanges();
+                            //productoInventario = Convert.ToInt32(detalleCompra.IdProducto);
+                            //suma = detalleCompra.Cantidad;
+
+                        }
+                        MessageBox.Show("La Compra se registro con exito ");
+                        dgvCompras.Rows.Clear();
+                        limpiarVenta();
+                        Limpiar();
+                        CargarCombos();
+                        retornoId();
+
 
                     }
-                    MessageBox.Show("La Compra se registro con exito ");
-                    dgvCompras.Rows.Clear();
-                    limpiarVenta();
-                    Limpiar();
-                    CargarCombos();
-                    retornoId();
-
-
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo salio mal... " + ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                }
             }
         }
 
@@ -395,6 +451,45 @@ namespace ProyectoSICOVE.Formularios
             else if (WindowState == FormWindowState.Minimized)
             {
                 WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void txtPrecio_Validating(object sender, CancelEventArgs e)
+        {
+            int num;
+            if (int.TryParse(txtPrecio.Text, out num))
+            {
+                errorProvider1.SetError(txtPrecio, "Ingrese el valor en números");
+            }
+            else
+            {
+                errorProvider1.SetError(txtPrecio, "");
+            }
+        }
+
+        private void txtCantidad_Validating(object sender, CancelEventArgs e)
+        {
+            int num;
+            if (int.TryParse(txtCantidad.Text, out num))
+            {
+                errorProvider1.SetError(txtCantidad, "Ingrese el valor en números");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCantidad, "");
+            }
+        }
+
+        private void txtIVA_Validating(object sender, CancelEventArgs e)
+        {
+            int num;
+            if (int.TryParse(txtIVA.Text, out num))
+            {
+                errorProvider1.SetError(txtIVA, "Ingrese el valor en números");
+            }
+            else
+            {
+                errorProvider1.SetError(txtIVA, "");
             }
         }
     }
