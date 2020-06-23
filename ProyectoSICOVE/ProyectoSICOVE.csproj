@@ -68,18 +68,6 @@
     <Compile Include="ConsultarRPT\frmrptClientes.Designer.cs">
       <DependentUpon>frmrptClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarRPT\frmrptProductos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultarRPT\frmrptProductos.Designer.cs">
-      <DependentUpon>frmrptProductos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Formularios\frmBusquedas\frmBuscarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,21 +220,8 @@
       <DependentUpon>rptClientes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\rptProductos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptProductos.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="ConsultarRPT\frmrptClientes.resx">
       <DependentUpon>frmrptClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarRPT\frmrptProductos.resx">
-      <DependentUpon>frmrptProductos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmBusquedas\frmBuscarProducto.resx">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
@@ -305,10 +280,6 @@
     <EmbeddedResource Include="Reportes\rptClientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptClientes.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\rptProductos.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptProductos.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\SICOVE1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

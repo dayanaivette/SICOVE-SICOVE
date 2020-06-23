@@ -128,9 +128,9 @@ namespace ProyectoSICOVE.Formularios
 
         private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmrptProductos frmrptProductos = new frmrptProductos();
-            frmrptProductos.MdiParent = this;
-            frmrptProductos.Show();
+            //frmrptProductos frmrptProductos = new frmrptProductos();
+            //frmrptProductos.MdiParent = this;
+            //frmrptProductos.Show();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)

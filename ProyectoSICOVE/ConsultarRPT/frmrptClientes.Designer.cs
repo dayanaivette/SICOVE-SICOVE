@@ -44,7 +44,9 @@
             // crClientes
             // 
             this.crClientes.ActiveViewIndex = -1;
+            this.crClientes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.crClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crClientes.Cursor = System.Windows.Forms.Cursors.Default;
             this.crClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crClientes.Location = new System.Drawing.Point(0, 0);
             this.crClientes.Name = "crClientes";
@@ -55,9 +57,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 506);
+            this.ClientSize = new System.Drawing.Size(960, 514);
             this.Controls.Add(this.panel1);
             this.Name = "frmrptClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmrptClientes";
             this.Load += new System.EventHandler(this.frmrptClientes_Load);
             this.panel1.ResumeLayout(false);
