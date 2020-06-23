@@ -46,7 +46,7 @@
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(942, 0);
+            this.btnMinimizar.Location = new System.Drawing.Point(1069, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(28, 36);
             this.btnMinimizar.TabIndex = 21;
@@ -61,7 +61,7 @@
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(970, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(1097, 0);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(32, 36);
             this.btnCerrar.TabIndex = 17;
@@ -76,16 +76,17 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1002, 36);
+            this.panel1.Size = new System.Drawing.Size(1129, 36);
             this.panel1.TabIndex = 46;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.crProveedor);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 42);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 36);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1002, 553);
+            this.panel2.Size = new System.Drawing.Size(1129, 587);
             this.panel2.TabIndex = 47;
             // 
             // crProveedor
@@ -96,14 +97,14 @@
             this.crProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crProveedor.Location = new System.Drawing.Point(0, 0);
             this.crProveedor.Name = "crProveedor";
-            this.crProveedor.Size = new System.Drawing.Size(1002, 553);
-            this.crProveedor.TabIndex = 0;
+            this.crProveedor.Size = new System.Drawing.Size(1129, 587);
+            this.crProveedor.TabIndex = 1;
             // 
             // frmrptProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 595);
+            this.ClientSize = new System.Drawing.Size(1129, 635);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

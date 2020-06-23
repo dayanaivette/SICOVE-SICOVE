@@ -46,7 +46,7 @@
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(960, 0);
+            this.btnMinimizar.Location = new System.Drawing.Point(1058, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(28, 36);
             this.btnMinimizar.TabIndex = 21;
@@ -61,7 +61,7 @@
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(988, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(1086, 0);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(32, 36);
             this.btnCerrar.TabIndex = 17;
@@ -76,16 +76,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1020, 36);
+            this.panel1.Size = new System.Drawing.Size(1118, 36);
             this.panel1.TabIndex = 47;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.crEmpleados);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 44);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 36);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1020, 507);
+            this.panel2.Size = new System.Drawing.Size(1118, 616);
             this.panel2.TabIndex = 48;
             // 
             // crEmpleados
@@ -93,17 +93,17 @@
             this.crEmpleados.ActiveViewIndex = -1;
             this.crEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crEmpleados.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crEmpleados.Dock = System.Windows.Forms.DockStyle.Top;
             this.crEmpleados.Location = new System.Drawing.Point(0, 0);
             this.crEmpleados.Name = "crEmpleados";
-            this.crEmpleados.Size = new System.Drawing.Size(1020, 507);
-            this.crEmpleados.TabIndex = 0;
+            this.crEmpleados.Size = new System.Drawing.Size(1118, 613);
+            this.crEmpleados.TabIndex = 4;
             // 
             // frmrptEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 551);
+            this.ClientSize = new System.Drawing.Size(1118, 664);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

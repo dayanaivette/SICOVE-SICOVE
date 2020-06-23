@@ -45,5 +45,10 @@ namespace ProyectoSICOVE.ConsultarRPT
                 crProveedor.ReportSource = rptProveedor;
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

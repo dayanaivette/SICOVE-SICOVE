@@ -28,5 +28,22 @@ namespace ProyectoSICOVE.ConsultarRPT
                 crClientes.ReportSource = rptClientes;
             }
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            else if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
