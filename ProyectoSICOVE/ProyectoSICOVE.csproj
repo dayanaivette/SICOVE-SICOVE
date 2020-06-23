@@ -68,6 +68,18 @@
     <Compile Include="ConsultarRPT\frmrptClientes.Designer.cs">
       <DependentUpon>frmrptClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarRPT\frmrptEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarRPT\frmrptEmpleados.Designer.cs">
+      <DependentUpon>frmrptEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarRPT\frmrptProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarRPT\frmrptProveedor.Designer.cs">
+      <DependentUpon>frmrptProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmBusquedas\frmBuscarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,8 +232,20 @@
       <DependentUpon>rptClientes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\rptEmpleados.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmpleados.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="ConsultarRPT\frmrptClientes.resx">
       <DependentUpon>frmrptClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarRPT\frmrptEmpleados.resx">
+      <DependentUpon>frmrptEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarRPT\frmrptProveedor.resx">
+      <DependentUpon>frmrptProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmBusquedas\frmBuscarProducto.resx">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
@@ -280,6 +304,10 @@
     <EmbeddedResource Include="Reportes\rptClientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptClientes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEmpleados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmpleados.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\SICOVE1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

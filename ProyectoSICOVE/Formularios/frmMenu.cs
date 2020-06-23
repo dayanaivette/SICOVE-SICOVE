@@ -139,5 +139,12 @@ namespace ProyectoSICOVE.Formularios
             frmrptClientes.MdiParent = this;
             frmrptClientes.Show();
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmrptProveedor frmrptProveedor = new frmrptProveedor();
+            frmrptProveedor.MdiParent = this;
+            frmrptProveedor.Show();
+        }
     }
 }

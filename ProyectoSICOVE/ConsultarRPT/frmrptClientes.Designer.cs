@@ -38,7 +38,7 @@
             this.panel1.Controls.Add(this.crClientes);
             this.panel1.Location = new System.Drawing.Point(4, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(872, 482);
+            this.panel1.Size = new System.Drawing.Size(1011, 529);
             this.panel1.TabIndex = 0;
             // 
             // crClientes
@@ -50,14 +50,14 @@
             this.crClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crClientes.Location = new System.Drawing.Point(0, 0);
             this.crClientes.Name = "crClientes";
-            this.crClientes.Size = new System.Drawing.Size(872, 482);
-            this.crClientes.TabIndex = 0;
+            this.crClientes.Size = new System.Drawing.Size(1011, 529);
+            this.crClientes.TabIndex = 1;
             // 
             // frmrptClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 514);
+            this.ClientSize = new System.Drawing.Size(1027, 553);
             this.Controls.Add(this.panel1);
             this.Name = "frmrptClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
