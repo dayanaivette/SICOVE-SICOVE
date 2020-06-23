@@ -36,7 +36,7 @@ namespace ProyectoSICOVE.Formularios.frmBusquedas
 
                 var buscarprod = from tb_productos in db.tb_Productos
                                  from tb_Categorias in db.tb_Categorias
-                                 where tb_productos.IdProducto == tb_Categorias.IdCategoria 
+                                 where tb_Categorias.IdCategoria  == tb_productos.IdProducto
                                  where tb_productos.Nombre.Contains(nombre)
                                  //where tb_Categorias.Nombre.Contains(nombre)
 
@@ -45,7 +45,7 @@ namespace ProyectoSICOVE.Formularios.frmBusquedas
                                  {
                                      Codigo = tb_productos.IdProducto,
                                      Nombre = tb_productos.Nombre,
-                                     IdCategoria = tb_Categorias.IdCategoria,
+                                    // IdCategoria = tb_Categorias.IdCategoria,
                                      Categoria = tb_Categorias.Nombre
                                  };
 

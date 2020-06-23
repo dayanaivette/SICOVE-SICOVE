@@ -238,6 +238,12 @@
       <DependentUpon>rptEmpleados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\rptProveedor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProveedor.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="ConsultarRPT\frmrptClientes.resx">
       <DependentUpon>frmrptClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +314,10 @@
     <EmbeddedResource Include="Reportes\rptEmpleados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptEmpleados.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptProveedor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProveedor.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\SICOVE1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

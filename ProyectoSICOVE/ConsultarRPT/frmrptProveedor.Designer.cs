@@ -33,7 +33,9 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.crProveedor = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnMinimizar
@@ -79,11 +81,23 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.crProveedor);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 42);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1002, 553);
             this.panel2.TabIndex = 47;
+            // 
+            // crProveedor
+            // 
+            this.crProveedor.ActiveViewIndex = -1;
+            this.crProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crProveedor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crProveedor.Location = new System.Drawing.Point(0, 0);
+            this.crProveedor.Name = "crProveedor";
+            this.crProveedor.Size = new System.Drawing.Size(1002, 553);
+            this.crProveedor.TabIndex = 0;
             // 
             // frmrptProveedor
             // 
@@ -98,6 +112,7 @@
             this.Text = "frmrptProveedor";
             this.Load += new System.EventHandler(this.frmrptProveedor_Load);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -108,5 +123,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crProveedor;
     }
 }

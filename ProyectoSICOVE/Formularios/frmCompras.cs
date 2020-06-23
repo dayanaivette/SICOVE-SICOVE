@@ -409,7 +409,7 @@ namespace ProyectoSICOVE.Formularios
                                 {
                                     int idCompra = inventarios.Existencia;
 
-                                    inventarios.Existencia = inventarios.Existencia + cantidadConvertidos;
+                                    inventarios.Existencia = inventarios.Existencia; // cantidadConvertidos;
                                     db.Entry(inventarios).State = System.Data.Entity.EntityState.Modified;
                                 }
                             }

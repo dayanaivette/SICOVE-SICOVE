@@ -146,5 +146,12 @@ namespace ProyectoSICOVE.Formularios
             frmrptProveedor.MdiParent = this;
             frmrptProveedor.Show();
         }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmrptEmpleados frmrptEmpleados = new frmrptEmpleados();
+            frmrptEmpleados.MdiParent = this;
+            frmrptEmpleados.Show();
+        }
     }
 }

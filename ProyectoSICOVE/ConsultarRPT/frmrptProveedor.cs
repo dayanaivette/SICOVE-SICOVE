@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoSICOVE.Reportes;
+using ProyectoSICOVE.Model;
 
 namespace ProyectoSICOVE.ConsultarRPT
 {
@@ -36,7 +38,12 @@ namespace ProyectoSICOVE.ConsultarRPT
 
         private void frmrptProveedor_Load(object sender, EventArgs e)
         {
-
+            using (SICOVE1Entities2 db = new SICOVE1Entities2())
+            {
+                rptProveedor rptProveedor = new rptProveedor();
+                rptProveedor.SetDataSource(db.tb_Clientes.ToList());
+                crProveedor.ReportSource = rptProveedor;
+            }
         }
     }
 }

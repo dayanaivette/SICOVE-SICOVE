@@ -51,13 +51,13 @@
             this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrar1 = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,7 +80,7 @@
             menuStrip1.Location = new System.Drawing.Point(14, 169);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            menuStrip1.Size = new System.Drawing.Size(118, 137);
+            menuStrip1.Size = new System.Drawing.Size(126, 156);
             menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 2;
             menuStrip1.TabStop = true;
@@ -95,7 +95,7 @@
             this.procesosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.procesosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("procesosToolStripMenuItem.Image")));
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(111, 25);
+            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(119, 25);
             this.procesosToolStripMenuItem.Text = "Procesos";
             // 
             // facturaToolStripMenuItem
@@ -259,7 +259,7 @@
             this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Ebrima", 12.75F);
             this.reportesToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(111, 27);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(119, 27);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
             // productosToolStripMenuItem1
@@ -285,6 +285,14 @@
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
+            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -361,13 +369,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 28);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // frmMenu
             // 
