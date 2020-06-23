@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoSICOVE.ConsultarRPT;
 
 namespace ProyectoSICOVE.Formularios
 {
@@ -123,6 +124,20 @@ namespace ProyectoSICOVE.Formularios
             {
                 WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmrptProductos frmrptProductos = new frmrptProductos();
+            frmrptProductos.MdiParent = this;
+            frmrptProductos.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmrptClientes frmrptClientes = new frmrptClientes();
+            frmrptClientes.MdiParent = this;
+            frmrptClientes.Show();
         }
     }
 }
