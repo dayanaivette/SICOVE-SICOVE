@@ -401,28 +401,30 @@ namespace ProyectoSICOVE.Formularios
                             detalleCompra.Total = totalConvertidos;
 
 
-
-                            var listaInventario = from inv in db.tb_Inventarios
-                                                  from prod in db.tb_Productos
-                                                  where prod.IdProducto == inv.IdProducto
-                                                  select prod;
-
-                            foreach (var iterar in listaInventario)
+                            var listaInventario = db.tb_Inventarios;
+                            try
                             {
-                                tb_Productos productos = new tb_Productos();
-                                productos = iterar;
+                                inventarios = db.tb_Inventarios.Where(VerificarId => VerificarId.IdProducto == IdProductoConvertidos).First();
+                                foreach (var iterardatostbventa in listaInventario)
+                                {
+                                    int idCompra = inventarios.Existencia;
 
-                                int idInv = Int32.Parse(idProducto.ToString());
-                                inventarios = db.tb_Inventarios.Where(VerificarID => VerificarID.IdProducto == idInv).First();
-                                int sumarInventario = (Convert.ToInt32(cantidadConvertidos) / Convert.ToInt32(inventarios.Existencia));
-                                inventarios.Existencia = inventarios.Existencia + sumarInventario;
+                                    inventarios.Existencia = inventarios.Existencia + cantidadConvertidos;
+                                    db.Entry(inventarios).State = System.Data.Entity.EntityState.Modified;
+                                }
                             }
-
+                            catch (Exception ex)
+                            {
+                                inventarios.Existencia = inventarios.Existencia + cantidadConvertidos;
+                                inventarios.IdProducto = IdProductoConvertidos;
+                                db.tb_Inventarios.Add(inventarios);
+                            }
                             db.tb_DetalleCompras.Add(detalleCompra);
-                            db.tb_Inventarios.Add(inventarios);
                             db.SaveChanges();
-                            //productoInventario = Convert.ToInt32(detalleCompra.IdProducto);
-                            //suma = detalleCompra.Cantidad;
+
+
+
+                         
 
                         }
                         MessageBox.Show("La Compra se registro con exito ");
