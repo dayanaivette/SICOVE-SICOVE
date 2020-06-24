@@ -111,9 +111,10 @@
             // 
             // txtBuscarProducto
             // 
-            this.txtBuscarProducto.BackColor = System.Drawing.Color.Silver;
+            this.txtBuscarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtBuscarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscarProducto.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
             this.txtBuscarProducto.Location = new System.Drawing.Point(146, 96);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
             this.txtBuscarProducto.Size = new System.Drawing.Size(491, 21);

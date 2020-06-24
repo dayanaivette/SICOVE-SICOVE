@@ -81,7 +81,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.Location = new System.Drawing.Point(375, 464);
+            this.btnEditar.Location = new System.Drawing.Point(362, 483);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(83, 40);
             this.btnEditar.TabIndex = 26;
@@ -99,7 +99,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.Location = new System.Drawing.Point(497, 464);
+            this.btnEliminar.Location = new System.Drawing.Point(484, 483);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(95, 40);
             this.btnEliminar.TabIndex = 25;
@@ -117,7 +117,7 @@
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.Location = new System.Drawing.Point(240, 464);
+            this.btnGuardar.Location = new System.Drawing.Point(227, 483);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(104, 40);
             this.btnGuardar.TabIndex = 22;
@@ -135,7 +135,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevo.Location = new System.Drawing.Point(125, 463);
+            this.btnNuevo.Location = new System.Drawing.Point(112, 482);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(89, 40);
             this.btnNuevo.TabIndex = 34;
@@ -162,7 +162,7 @@
             this.groupBox1.Controls.Add(this.dgvUsuarios);
             this.groupBox1.Location = new System.Drawing.Point(21, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(706, 417);
+            this.groupBox1.Size = new System.Drawing.Size(706, 435);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             // 
@@ -174,10 +174,11 @@
             this.dtpFechaReg.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(96)))), ((int)(((byte)(130)))));
             this.dtpFechaReg.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(96)))), ((int)(((byte)(130)))));
             this.dtpFechaReg.CalendarTrailingForeColor = System.Drawing.Color.Silver;
-            this.dtpFechaReg.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaReg.Location = new System.Drawing.Point(162, 201);
+            this.dtpFechaReg.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaReg.Location = new System.Drawing.Point(219, 197);
             this.dtpFechaReg.Name = "dtpFechaReg";
-            this.dtpFechaReg.Size = new System.Drawing.Size(285, 25);
+            this.dtpFechaReg.Size = new System.Drawing.Size(120, 28);
             this.dtpFechaReg.TabIndex = 56;
             // 
             // label6
@@ -185,7 +186,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(23, 204);
+            this.label6.Location = new System.Drawing.Point(81, 197);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(133, 21);
             this.label6.TabIndex = 45;
@@ -193,7 +194,7 @@
             // 
             // cmbEmpleado
             // 
-            this.cmbEmpleado.BackColor = System.Drawing.Color.Silver;
+            this.cmbEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbEmpleado.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmpleado.FormattingEnabled = true;
@@ -227,7 +228,7 @@
             // 
             // cmbRol
             // 
-            this.cmbRol.BackColor = System.Drawing.Color.Silver;
+            this.cmbRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbRol.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRol.ForeColor = System.Drawing.Color.Black;
@@ -244,7 +245,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(81, 133);
+            this.label3.Location = new System.Drawing.Point(91, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 21);
             this.label3.TabIndex = 40;
@@ -262,7 +263,7 @@
             // 
             // txtClave
             // 
-            this.txtClave.BackColor = System.Drawing.Color.Silver;
+            this.txtClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtClave.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.ForeColor = System.Drawing.Color.Black;
@@ -274,7 +275,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.BackColor = System.Drawing.Color.Silver;
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsuario.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.Black;
@@ -299,7 +300,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(65, 62);
+            this.label1.Location = new System.Drawing.Point(81, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 35;
@@ -341,7 +342,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.EnableHeadersVisualStyles = false;
-            this.dgvUsuarios.Location = new System.Drawing.Point(16, 232);
+            this.dgvUsuarios.Location = new System.Drawing.Point(16, 238);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -464,7 +465,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(735, 518);
+            this.ClientSize = new System.Drawing.Size(735, 538);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnNuevo);

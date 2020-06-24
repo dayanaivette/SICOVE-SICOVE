@@ -494,5 +494,7 @@ namespace ProyectoSICOVE.Formularios
                 errorProvider1.SetError(txtIVA, "");
             }
         }
+
+       
     }
 }

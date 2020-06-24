@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimizar = new System.Windows.Forms.Button();
@@ -94,7 +94,7 @@
             // 
             // cmbCliente
             // 
-            this.cmbCliente.BackColor = System.Drawing.Color.Silver;
+            this.cmbCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCliente.FormattingEnabled = true;
@@ -165,7 +165,7 @@
             // 
             // txtDetalleVenta
             // 
-            this.txtDetalleVenta.BackColor = System.Drawing.Color.Silver;
+            this.txtDetalleVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDetalleVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDetalleVenta.Location = new System.Drawing.Point(515, 157);
             this.txtDetalleVenta.Multiline = true;
@@ -239,14 +239,14 @@
             // 
             // txtTotalFinal
             // 
-            this.txtTotalFinal.BackColor = System.Drawing.Color.Silver;
+            this.txtTotalFinal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTotalFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotalFinal.Enabled = false;
             this.txtTotalFinal.Font = new System.Drawing.Font("Perpetua Titling MT", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalFinal.Location = new System.Drawing.Point(755, 505);
+            this.txtTotalFinal.Location = new System.Drawing.Point(755, 507);
             this.txtTotalFinal.Multiline = true;
             this.txtTotalFinal.Name = "txtTotalFinal";
-            this.txtTotalFinal.Size = new System.Drawing.Size(164, 55);
+            this.txtTotalFinal.Size = new System.Drawing.Size(143, 53);
             this.txtTotalFinal.TabIndex = 76;
             this.txtTotalFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -325,14 +325,14 @@
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(143)))), ((int)(((byte)(119)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(143)))), ((int)(((byte)(119)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdCompra,
@@ -344,27 +344,27 @@
             this.SubTotal,
             this.IVA,
             this.Total});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(137)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(137)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.Location = new System.Drawing.Point(15, 296);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(143)))), ((int)(((byte)(119)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(143)))), ((int)(((byte)(119)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVentas.Size = new System.Drawing.Size(904, 205);
             this.dgvVentas.TabIndex = 74;
             this.dgvVentas.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvCompras_RowsRemoved);
@@ -377,7 +377,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.BackColor = System.Drawing.Color.Silver;
+            this.txtTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -422,11 +422,11 @@
             // 
             // dtpFechaReg
             // 
-            this.dtpFechaReg.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaReg.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaReg.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaReg.Location = new System.Drawing.Point(540, 107);
+            this.dtpFechaReg.Location = new System.Drawing.Point(562, 107);
             this.dtpFechaReg.Name = "dtpFechaReg";
-            this.dtpFechaReg.Size = new System.Drawing.Size(173, 25);
+            this.dtpFechaReg.Size = new System.Drawing.Size(123, 28);
             this.dtpFechaReg.TabIndex = 69;
             // 
             // label10
@@ -486,7 +486,7 @@
             // 
             // txtSubTotal
             // 
-            this.txtSubTotal.BackColor = System.Drawing.Color.Silver;
+            this.txtSubTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSubTotal.Enabled = false;
             this.txtSubTotal.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -498,7 +498,7 @@
             // 
             // txtIVA
             // 
-            this.txtIVA.BackColor = System.Drawing.Color.Silver;
+            this.txtIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtIVA.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIVA.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIVA.Location = new System.Drawing.Point(668, 258);
@@ -511,7 +511,7 @@
             // 
             // txtCategoriaProd
             // 
-            this.txtCategoriaProd.BackColor = System.Drawing.Color.Silver;
+            this.txtCategoriaProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtCategoriaProd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCategoriaProd.Enabled = false;
             this.txtCategoriaProd.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -540,7 +540,7 @@
             // 
             // cmbFormaPago
             // 
-            this.cmbFormaPago.BackColor = System.Drawing.Color.Silver;
+            this.cmbFormaPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbFormaPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFormaPago.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFormaPago.ForeColor = System.Drawing.Color.Black;
@@ -618,7 +618,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.BackColor = System.Drawing.Color.Silver;
+            this.txtPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.Location = new System.Drawing.Point(422, 258);
@@ -631,7 +631,7 @@
             // 
             // txtNombreProducto
             // 
-            this.txtNombreProducto.BackColor = System.Drawing.Color.Silver;
+            this.txtNombreProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtNombreProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreProducto.Enabled = false;
             this.txtNombreProducto.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -642,7 +642,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.BackColor = System.Drawing.Color.Silver;
+            this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCantidad.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.Location = new System.Drawing.Point(505, 258);
@@ -656,7 +656,7 @@
             // 
             // txtCodProducto
             // 
-            this.txtCodProducto.BackColor = System.Drawing.Color.Silver;
+            this.txtCodProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtCodProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodProducto.Enabled = false;
             this.txtCodProducto.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -667,7 +667,7 @@
             // 
             // txtBuscarProducto
             // 
-            this.txtBuscarProducto.BackColor = System.Drawing.Color.Silver;
+            this.txtBuscarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtBuscarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscarProducto.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscarProducto.Location = new System.Drawing.Point(116, 200);
@@ -678,7 +678,7 @@
             // 
             // txtNunFac
             // 
-            this.txtNunFac.BackColor = System.Drawing.Color.Silver;
+            this.txtNunFac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtNunFac.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNunFac.Enabled = false;
             this.txtNunFac.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -689,7 +689,7 @@
             // 
             // txtIdCategoriaProd
             // 
-            this.txtIdCategoriaProd.BackColor = System.Drawing.Color.Silver;
+            this.txtIdCategoriaProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtIdCategoriaProd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIdCategoriaProd.Enabled = false;
             this.txtIdCategoriaProd.Location = new System.Drawing.Point(229, 239);
