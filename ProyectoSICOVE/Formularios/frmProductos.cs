@@ -271,5 +271,17 @@ namespace ProyectoSICOVE.Formularios
         {
             this.Hide();
         }
+
+        /// validacion de letras y numeros
+        Validaciones v = new Validaciones();
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
+
+        private void txtDetalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
     }
 }

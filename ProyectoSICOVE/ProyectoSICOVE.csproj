@@ -74,6 +74,12 @@
     <Compile Include="ConsultarRPT\frmrptEmpleados.Designer.cs">
       <DependentUpon>frmrptEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarRPT\frmrptProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarRPT\frmrptProductos.Designer.cs">
+      <DependentUpon>frmrptProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarRPT\frmrptProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,7 @@
     <Compile Include="Model\tb_Ventas.cs">
       <DependentUpon>SICOVE1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Validaciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\rptClientes.cs">
@@ -249,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarRPT\frmrptEmpleados.resx">
       <DependentUpon>frmrptEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarRPT\frmrptProductos.resx">
+      <DependentUpon>frmrptProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarRPT\frmrptProveedor.resx">
       <DependentUpon>frmrptProveedor.cs</DependentUpon>

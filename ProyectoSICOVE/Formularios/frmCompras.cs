@@ -126,7 +126,7 @@ namespace ProyectoSICOVE.Formularios
             try
             {
                 Double subTotal;
-                Double iva;
+                Double iva = 0;
                 Double total;
 
                 subTotal = Convert.ToDouble(txtSubTotal.Text);
@@ -409,7 +409,7 @@ namespace ProyectoSICOVE.Formularios
                                 {
                                     int idCompra = inventarios.Existencia;
 
-                                    inventarios.Existencia = inventarios.Existencia; // cantidadConvertidos;
+                                    inventarios.Existencia = inventarios.Existencia + cantidadConvertidos;
                                     db.Entry(inventarios).State = System.Data.Entity.EntityState.Modified;
                                 }
                             }
@@ -419,6 +419,8 @@ namespace ProyectoSICOVE.Formularios
                                 inventarios.IdProducto = IdProductoConvertidos;
                                 db.tb_Inventarios.Add(inventarios);
                             }
+
+
                             db.tb_DetalleCompras.Add(detalleCompra);
                             db.SaveChanges();
 
@@ -494,7 +496,18 @@ namespace ProyectoSICOVE.Formularios
                 errorProvider1.SetError(txtIVA, "");
             }
         }
+        /// <summary>
+        /// ///////////validacion de parametro
+        /// 
+        Validaciones v = new Validaciones();
+        private void txtDetalleCompra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
 
-       
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
+        }
     }
 }

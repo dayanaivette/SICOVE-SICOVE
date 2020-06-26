@@ -191,6 +191,7 @@
             this.txtFPago.Name = "txtFPago";
             this.txtFPago.Size = new System.Drawing.Size(159, 22);
             this.txtFPago.TabIndex = 50;
+            this.txtFPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFPago_KeyPress);
             // 
             // dgvFPagos
             // 

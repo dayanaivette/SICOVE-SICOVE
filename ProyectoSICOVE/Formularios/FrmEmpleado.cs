@@ -126,9 +126,9 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarEmpelado())
-            {
+        //    BorrarValidacion();
+        //    if (ValidarEmpelado())
+        //    {
                 try
                 {
 
@@ -153,7 +153,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo" + ex.ToString());
                 }
-            }
+            //}
         }
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -182,9 +182,9 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarEmpelado())
-            {
+            //BorrarValidacion();
+            //if (ValidarEmpelado())
+            //{
                 try
                 {
 
@@ -213,7 +213,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            }
+            //}
         }
 
         private void btnEliminar_Click_1(object sender, EventArgs e)
@@ -275,6 +275,26 @@ namespace ProyectoSICOVE.Formularios
             {
                 errorProvider1.SetError(txtCelular, "");
             }
+        }
+        Validaciones v = new Validaciones();
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
+        }
+
+        private void txtDUI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
         }
     }
 }

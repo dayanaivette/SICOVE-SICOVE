@@ -211,5 +211,10 @@ namespace ProyectoSICOVE.Formularios
                 WindowState = FormWindowState.Normal;
             }
         }
+        Validaciones v = new Validaciones();
+        private void txtFPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
     }
 }

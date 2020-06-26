@@ -299,5 +299,12 @@ namespace ProyectoSICOVE.Formularios
                 WindowState = FormWindowState.Normal;
             }
         }
+
+        //validar que permita solo letras y numeros
+        Validaciones v = new Validaciones();
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
     }
 }

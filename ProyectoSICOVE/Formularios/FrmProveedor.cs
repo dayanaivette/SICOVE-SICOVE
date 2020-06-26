@@ -99,9 +99,9 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarProveedor())
-            {
+            //BorrarValidacion();
+            //if (ValidarProveedor())
+            //{
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -124,7 +124,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            //}
         }
 
 
@@ -155,9 +155,9 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarProveedor())
-            {
+            //BorrarValidacion();
+            //if (ValidarProveedor())
+            //{
                 try
                 {
 
@@ -185,7 +185,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            }
+            //}
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -208,7 +208,7 @@ namespace ProyectoSICOVE.Formularios
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Algo salio mal... " + ex.ToString());
+                    MessageBox.Show("El proveedor no se puede eliminar porque tiene registros... ");
                 }
             
         }
@@ -261,6 +261,26 @@ namespace ProyectoSICOVE.Formularios
             {
                 errorProvider1.SetError(txtCelular, "");
             }
+        }
+        Validaciones v = new Validaciones();
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
+        }
+
+        private void txtDUI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
         }
     }
 }

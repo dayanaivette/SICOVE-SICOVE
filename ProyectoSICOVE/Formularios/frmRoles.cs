@@ -199,5 +199,11 @@ namespace ProyectoSICOVE.Formularios
                 WindowState = FormWindowState.Normal;
             }
         }
+        //validacion de solo letras
+        Validaciones v = new Validaciones();
+        private void txtRol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
     }
 }

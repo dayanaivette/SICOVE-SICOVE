@@ -69,43 +69,9 @@ namespace ProyectoSICOVE.Formularios
 
             txtNombre.Focus();
         }
-        private bool ValidarCliente()
-        {
-            bool ok = false;
-            if (txtNombre.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
-            }
-            if (txtDireccion.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtDireccion, "Ingrese una Dirección");
-            }
-            if (txtCelular.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtCelular, "Ingrese un Celular");
-            }
-            if (txtDUI.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtDUI, "Ingrese un DUI");
-            }
-            return ok;
-        }
-        private void BorrarValidacion()
-        {
-            errorProvider1.SetError(txtNombre, "");
-            errorProvider1.SetError(txtDireccion, "");
-            errorProvider1.SetError(txtCelular, "");
-            errorProvider1.SetError(txtDUI, "");
-        }
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarCliente())
-            {
                 try
                 {
 
@@ -129,15 +95,11 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            }
 
         }
 
         private void dgvClientes_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarCliente())
-            {
                 try
                 {
 
@@ -158,14 +120,10 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            BorrarValidacion();
-            if (ValidarCliente())
-            {
                 try
                 {
 
@@ -194,7 +152,6 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + MessageBoxIcon.Exclamation + ex.ToString());
                 }
-            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -254,15 +211,29 @@ namespace ProyectoSICOVE.Formularios
 
         private void txtCelular_Validating(object sender, CancelEventArgs e)
         {
-            int num;
-            if (int.TryParse(txtCelular.Text, out num))
-            {
-                errorProvider1.SetError(txtCelular, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCelular, "");
-            }
+        }
+
+        /// ///////////7777 va lidacion de campos
+        /// </summary>
+        Validaciones v = new Validaciones();
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloLetras(e);
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
+        }
+
+        private void txtDUI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
         }
     }
 }

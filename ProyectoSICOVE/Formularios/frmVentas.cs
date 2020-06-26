@@ -458,5 +458,16 @@ namespace ProyectoSICOVE.Formularios
                 errorProvider1.SetError(txtIVA, "");
             }
         }
+        //validaciones de solo letras y numero en el detalle de la venta 
+        Validaciones v = new Validaciones();
+        private void txtDetalleVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.Descripciones(e);
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.soloNumeros(e);
+        }
     }
 }
