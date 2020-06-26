@@ -142,36 +142,18 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarDetalleCompra()
-        {
-            bool ok = true;
-
-            if (txtPrecio.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtPrecio, "Ingrese un precio");
-            }
-            if (txtCantidad.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtCantidad, "Ingrese una cantidad");
-            }
-
-            return ok;
-        }
-
-        private void borrarValidacionDetalleCompra()
-        {
-            errorProvider1.SetError(txtPrecio, "");
-            errorProvider1.SetError(txtCantidad, "");
-        }
-
         //agregando el detalle del producto a la tabla, el cual sera el detalle de la compra 
         private void btnAgregarProd_Click(object sender, EventArgs e)
         {
-            borrarValidacionDetalleCompra();
-            if (validarDetalleCompra())
+            if (string.IsNullOrEmpty(txtCodProducto.Text) || string.IsNullOrEmpty(txtIdCategoria.Text) ||
+                 string.IsNullOrEmpty(txtCantidad.Text) || string.IsNullOrEmpty(txtPrecio.Text))
             {
+                MessageBox.Show("Debe rellenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
                 try
                 {
 
@@ -307,38 +289,17 @@ namespace ProyectoSICOVE.Formularios
                 intentos += 1;
             }
         }
-        //permite la valizadacion de campos, asignando un valor de mensaje para campo que no contiene nada
-        private bool validarCompra()
-        {
-            bool ok = true;
-
-            if (cmbProveedor.Text == "Seleccione")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbProveedor, "Seleccione un cliente");
-            }
-
-            if (cmbFormaPago.Text == "Seleccione")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbFormaPago, "Seleccione una forma de pago");
-            }
-
-            return ok;
-        }
-        //Elimina el mensaje error si este contiene informacion.
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(cmbProveedor, "");
-            errorProvider1.SetError(cmbFormaPago, "");
-        }
-
+      
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            borrarValidacion();
-            if (validarCompra())
+            if (string.IsNullOrEmpty(cmbProveedor.Text) || string.IsNullOrEmpty(cmbFormaPago.Text) || string.IsNullOrEmpty(txtTotalFinal.Text))
             {
+                MessageBox.Show("Debe de llenar los campos de la compra", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -457,48 +418,7 @@ namespace ProyectoSICOVE.Formularios
                 WindowState = FormWindowState.Normal;
             }
         }
-
-        private void txtPrecio_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtPrecio.Text, out num))
-            {
-                errorProvider1.SetError(txtPrecio, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtPrecio, "");
-            }
-        }
-
-        private void txtCantidad_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtCantidad.Text, out num))
-            {
-                errorProvider1.SetError(txtCantidad, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCantidad, "");
-            }
-        }
-
-        private void txtIVA_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtIVA.Text, out num))
-            {
-                errorProvider1.SetError(txtIVA, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtIVA, "");
-            }
-        }
-        /// <summary>
-        /// ///////////validacion de parametro
-        /// 
+        /// ///////////validacion de parametro 
         Validaciones v = new Validaciones();
         private void txtDetalleCompra_KeyPress(object sender, KeyPressEventArgs e)
         {

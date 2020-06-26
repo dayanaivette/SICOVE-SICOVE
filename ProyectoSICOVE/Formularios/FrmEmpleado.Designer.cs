@@ -267,7 +267,7 @@
             this.txtCelular.Size = new System.Drawing.Size(172, 22);
             this.txtCelular.TabIndex = 54;
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
-            this.txtCelular.Validating += new System.ComponentModel.CancelEventHandler(this.txtCelular_Validating);
+          
             // 
             // txtDUI
             // 

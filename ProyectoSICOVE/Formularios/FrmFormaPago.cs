@@ -49,26 +49,15 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarFPagos()
-        {
-            bool ok = true;
-            if (txtFPago.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtFPago, "Ingrese una Forma de pago");
-            }
-            return ok;
-        }
-
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(txtFPago, "");
-        }
-
+      
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarFPagos())
+            if (string.IsNullOrEmpty(txtFPago.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -110,8 +99,12 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarFPagos())
+            if (string.IsNullOrEmpty(txtFPago.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -142,6 +135,13 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtFPago.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -164,7 +164,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show(" Algo salio mal...  ¡Intente de nuevo! ");
                 }
-            
+            }
             
         }
 

@@ -48,27 +48,14 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarRol()
-        {
-            bool ok = true;
-            if (txtRol.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtRol, "Ingrese una Categoria");
-            }
-            return ok;
-        }
-
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(txtRol, "");
-        }
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarRol())
+            if (string.IsNullOrEmpty(txtRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -104,8 +91,12 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarRol())
+            if (string.IsNullOrEmpty(txtRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -136,6 +127,13 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -157,8 +155,8 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            
-            
+
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

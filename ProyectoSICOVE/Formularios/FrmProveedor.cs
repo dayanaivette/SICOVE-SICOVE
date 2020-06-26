@@ -65,43 +65,16 @@ namespace ProyectoSICOVE.Formularios
             txtNombre.Focus();
         }
 
-        private bool ValidarProveedor()
-        {
-            bool ok = false;
-            if (txtNombre.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
-            }
-            if (txtDireccion.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtDireccion, "Ingrese una Dirección");
-            }
-            if (txtCelular.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtCelular, "Ingrese un Celular");
-            }
-            if (txtDUI.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtDUI, "Ingrese un DUI");
-            }
-            return ok;
-        }
-        private void BorrarValidacion()
-        {
-            errorProvider1.SetError(txtNombre, "");
-            errorProvider1.SetError(txtDireccion, "");
-            errorProvider1.SetError(txtCelular, "");
-            errorProvider1.SetError(txtDUI, "");
-        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //BorrarValidacion();
-            //if (ValidarProveedor())
-            //{
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
+               string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -124,7 +97,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            //}
+            }
         }
 
 
@@ -155,9 +128,14 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            //BorrarValidacion();
-            //if (ValidarProveedor())
-            //{
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
+               string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
 
@@ -185,11 +163,19 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... " + ex.ToString());
                 }
-            //}
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
+               string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
 
@@ -210,7 +196,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("El proveedor no se puede eliminar porque tiene registros... ");
                 }
-            
+            }
         }
 
         private void btnxCerrar_Click(object sender, EventArgs e)
@@ -247,19 +233,6 @@ namespace ProyectoSICOVE.Formularios
             else if (WindowState == FormWindowState.Minimized)
             {
                 WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void txtCelular_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtCelular.Text, out num))
-            {
-                errorProvider1.SetError(txtCelular, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCelular, "");
             }
         }
         Validaciones v = new Validaciones();

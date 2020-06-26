@@ -72,6 +72,14 @@ namespace ProyectoSICOVE.Formularios
         
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(txtNombre.Text)||string.IsNullOrEmpty(txtDireccion.Text)||
+                string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
 
@@ -95,7 +103,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-
+            }
         }
 
         private void dgvClientes_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -124,6 +132,14 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
+               string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
 
@@ -150,8 +166,9 @@ namespace ProyectoSICOVE.Formularios
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Algo salio mal... Intente de nuevo " + MessageBoxIcon.Exclamation + ex.ToString());
+                    MessageBox.Show("Algo salio mal...  " + ex.ToString());
                 }
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -161,6 +178,14 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
+               string.IsNullOrEmpty(txtCelular.Text) || string.IsNullOrEmpty(txtDUI.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
 
@@ -181,7 +206,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal... Intente de nuevo " + ex.ToString());
                 }
-            
+            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -214,7 +239,7 @@ namespace ProyectoSICOVE.Formularios
         }
 
         /// ///////////7777 va lidacion de campos
-        /// </summary>
+
         Validaciones v = new Validaciones();
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -103,44 +103,16 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarUsuario()
-        {
-            bool ok = true;
-
-            if (txtUsuario.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtUsuario, "Ingrese un Usuario");
-            }
-            if (txtClave.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtClave, "Ingrese una Clave");
-            }
-            if (cmbEmpleado.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbEmpleado, "Seleccione un Empleado");
-            }
-            if (cmbRol.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbRol, "Seleccione un Rol");
-            }
-            return ok;
-        }
-
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(txtUsuario, "");
-            errorProvider1.SetError(txtClave, "");
-            errorProvider1.SetError(cmbEmpleado, "");
-            errorProvider1.SetError(cmbRol, "");
-        }
+       
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarUsuario())
+            if (string.IsNullOrEmpty(txtUsuario.Text)|| string.IsNullOrEmpty(txtClave.Text)||
+                string.IsNullOrEmpty(cmbEmpleado.Text)|| string.IsNullOrEmpty(cmbRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -193,8 +165,14 @@ namespace ProyectoSICOVE.Formularios
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarUsuario())
+
+            if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtClave.Text) ||
+                string.IsNullOrEmpty(cmbEmpleado.Text) || string.IsNullOrEmpty(cmbRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -235,6 +213,15 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtClave.Text) ||
+                string.IsNullOrEmpty(cmbEmpleado.Text) || string.IsNullOrEmpty(cmbRol.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -255,7 +242,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal, intente de nuevo");
                 }
-            
+            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

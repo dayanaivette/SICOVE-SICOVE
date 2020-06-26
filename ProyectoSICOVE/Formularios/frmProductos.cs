@@ -89,56 +89,35 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-                try
-                {
-
-                    groupBox1.Enabled = true;
-                    btnGuardar.Enabled = true;
-                    btnEditar.Enabled = true;
-                    btnEliminar.Enabled = true;
-
-                    btnNuevo.Enabled = false;
-
-                    dgvProductos.Rows.Clear();
-                    cargarGridview();
-                    limpiardatos();
-                    CargarCombo();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
-                }
-            
-        }
-
-        private bool validarProductos()
-        {
-            bool ok = true;
-
-            if (txtNombre.Text == "")
+            try
             {
-                ok = false;
-                errorProvider1.SetError(txtNombre, "Ingrese un Producto");
+
+                groupBox1.Enabled = true;
+                btnGuardar.Enabled = true;
+                btnEditar.Enabled = true;
+                btnEliminar.Enabled = true;
+
+                btnNuevo.Enabled = false;
+
+                dgvProductos.Rows.Clear();
+                cargarGridview();
+                limpiardatos();
+                CargarCombo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
             }
 
-            if (cmbCategoria.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbCategoria, "Ingrese una Categoria");
-            }
-            return ok;
         }
-
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(txtNombre, "");
-            errorProvider1.SetError(cmbCategoria, "");
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarProductos())
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(cmbCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -151,6 +130,7 @@ namespace ProyectoSICOVE.Formularios
 
                         String comboCategoria = cmbCategoria.SelectedValue.ToString();
                         productos.IdCategoria = Convert.ToInt32(comboCategoria);
+
 
                         db.tb_Productos.Add(productos);
                         db.SaveChanges();
@@ -186,8 +166,12 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarProductos())
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(cmbCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -226,6 +210,13 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(cmbCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -246,7 +237,7 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal, intente de nuevo... " + ex.ToString());
                 }
-            
+            }
         }
 
         private void btnNuevaCategoria_Click(object sender, EventArgs e)
@@ -281,7 +272,7 @@ namespace ProyectoSICOVE.Formularios
 
         private void txtDetalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            v.soloLetras(e);
+            v.Descripciones(e);
         }
     }
 }

@@ -53,44 +53,36 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-                try
-                {
-                    groupBox1.Enabled = true;
-                    btnGuardar.Enabled = true;
-                    btnEditar.Enabled = true;
-                    btnEminiar.Enabled = true;
-                    btnNuevo.Enabled = false;
-
-                    dgvCategoria.Rows.Clear();
-                    cargardatos();
-                    txtCategoria.Clear();
-                    txtCategoria.Focus();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Algo salio mal " + ex.ToString());
-                }
-            
-        }
-        private bool validarCategoria()
-        {
-            bool ok = true;
-            if (txtCategoria.Text == "")
+            try
             {
-                ok = false;
-                errorProvider1.SetError(txtCategoria, "Ingrese una Categoria");
+                groupBox1.Enabled = true;
+                btnGuardar.Enabled = true;
+                btnEditar.Enabled = true;
+                btnEminiar.Enabled = true;
+                btnNuevo.Enabled = false;
+
+                dgvCategoria.Rows.Clear();
+                cargardatos();
+                txtCategoria.Clear();
+                txtCategoria.Focus();
             }
-            return ok;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo salio mal " + ex.ToString());
+            }
+
         }
 
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(txtCategoria, "");
-        }
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarCategoria())
+            if (string.IsNullOrEmpty(txtCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -112,8 +104,8 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            }
 
+            }
         }
         //llevar los datos de la gris al los txt
         private void dgvCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -129,8 +121,12 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarCategoria())
+            if (string.IsNullOrEmpty(txtCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
             {
                 try
                 {
@@ -162,6 +158,13 @@ namespace ProyectoSICOVE.Formularios
 
         private void btnEminiar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCategoria.Text))
+            {
+                MessageBox.Show("Debe de llenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -182,8 +185,8 @@ namespace ProyectoSICOVE.Formularios
                 {
                     MessageBox.Show("Algo salio mal " + ex.ToString());
                 }
-            
 
+            }
         }
 
         private void btnCerrar1_Click(object sender, EventArgs e)

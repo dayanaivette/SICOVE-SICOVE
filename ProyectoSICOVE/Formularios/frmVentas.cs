@@ -153,35 +153,17 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarDetalleVenta()
-        {
-            bool ok = true;
-
-            if (txtPrecio.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtPrecio, "Ingrese un precio");
-            }
-            if (txtCantidad.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtCantidad, "Ingrese una cantidad");
-            }
-
-            return ok;
-        }
-
-        private void borrarValidacionDetalleVenta()
-        {
-            errorProvider1.SetError(txtPrecio, "");
-            errorProvider1.SetError(txtCantidad, "");
-        }
-
         private void btnAgregarProd_Click(object sender, EventArgs e)
         {
-            borrarValidacionDetalleVenta();
-            if (validarDetalleVenta())
+            if (string.IsNullOrEmpty(txtCodProducto.Text) || string.IsNullOrEmpty(txtIdCategoriaProd.Text) ||
+                 string.IsNullOrEmpty(txtCantidad.Text) || string.IsNullOrEmpty(txtPrecio.Text))
             {
+                MessageBox.Show("Debe rellenar los campos", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
                 try
                 {
 
@@ -310,36 +292,16 @@ namespace ProyectoSICOVE.Formularios
             }
         }
 
-        private bool validarVenta()
-        {
-            bool ok = true;
-
-            if (cmbCliente.Text == "Seleccione")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbCliente, "Seleccione un cliente");
-            }
-
-            if (cmbFormaPago.Text == "Seleccione")
-            {
-                ok = false;
-                errorProvider1.SetError(cmbFormaPago, "Seleccione una forma de pago");
-            }
-
-            return ok;
-        }
-
-        private void borrarValidacion()
-        {
-            errorProvider1.SetError(cmbCliente, "");
-            errorProvider1.SetError(cmbFormaPago, "");
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            borrarValidacion();
-            if (validarVenta())
+            if (string.IsNullOrEmpty(cmbCliente.Text) || string.IsNullOrEmpty(cmbFormaPago.Text) || string.IsNullOrEmpty(txtTotalFinal.Text))
             {
+                MessageBox.Show("Debe de llenar los campos de la compra", "Completar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
                 try
                 {
                     using (SICOVE1Entities2 db = new SICOVE1Entities2())
@@ -418,46 +380,6 @@ namespace ProyectoSICOVE.Formularios
             }
 
         }
-
-        private void txtPrecio_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtPrecio.Text, out num))
-            {
-                errorProvider1.SetError(txtPrecio, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtPrecio, "");
-            }
-        }
-
-        private void txtCantidad_Validating(object sender, CancelEventArgs e)
-        {
-
-            int num;
-            if (int.TryParse(txtCantidad.Text, out num))
-            {
-                errorProvider1.SetError(txtCantidad, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtCantidad, "");
-            }
-        }
-
-        private void txtIVA_Validating(object sender, CancelEventArgs e)
-        {
-            int num;
-            if (int.TryParse(txtIVA.Text, out num))
-            {
-                errorProvider1.SetError(txtIVA, "Ingrese el valor en números");
-            }
-            else
-            {
-                errorProvider1.SetError(txtIVA, "");
-            }
-        }
         //validaciones de solo letras y numero en el detalle de la venta 
         Validaciones v = new Validaciones();
         private void txtDetalleVenta_KeyPress(object sender, KeyPressEventArgs e)
@@ -468,6 +390,49 @@ namespace ProyectoSICOVE.Formularios
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.soloNumeros(e);
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        //validacion de texbox con decimales 
+        Boolean permitir = true;//variable global para saber si se permite ctrl + C y ctrl + V
+        public bool solonumeros(int code)
+        {
+            bool resultado;
+
+            if (code == 46 && txtPrecio.Text.Contains("."))//se evalua si es punto y si es punto se rebiza si ya existe en el textbox
+            {
+                resultado = true;
+            }
+            else if ((((code >= 48) && (code <= 57)) || (code == 8) || code == 46)) //se evaluan las teclas validas
+            {
+                resultado = false;
+            }
+            else if (!permitir)
+            {
+                resultado = permitir;
+            }
+            else
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
+        private void txtPrecio_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool paste = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.V)));
+            bool copy = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.C)));
+            if (paste || copy)
+            {
+                permitir = false;
+            }
+            else
+            {
+                permitir = true;
+            }
+            //https://es.stackoverflow.com/questions/134128/validar-textbox-solo-n%C3%BAmeros-signo-decimal-y-permitir-copiar-y-pegar-c
         }
     }
 }
