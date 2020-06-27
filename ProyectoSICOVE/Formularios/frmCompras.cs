@@ -429,5 +429,104 @@ namespace ProyectoSICOVE.Formularios
         {
             v.soloNumeros(e);
         }
+        //---------------------------------------------------------------------------------------------
+        //validacion de txt de precio-- solo numero y admite una vez el punto
+        Boolean permitir = true;//variable global para saber si se permite ctrl + C y ctrl + V
+        public bool soloPrecios(int code)
+        {
+            bool resultado;
+            //se evalua si es punto y si es punto se rebiza si ya existe en el textbox
+            if (code == 46 && txtPrecio.Text.Contains("."))
+            {
+                resultado = true;
+            }
+            //se evaluan las teclas validas
+            //la validacion se hace en base a la tabla de caracteres de la ASCI
+            else if ((((code >= 48) && (code <= 57)) || (code == 8) || code == 46))
+            {
+                resultado = false;
+            }
+            else if (!permitir)
+            {
+                resultado = permitir;
+            }
+            else
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //llamada a la funcion que evalua que tecla es aceptada y permite que solo vayan numero y un punto
+            e.Handled = soloPrecios(Convert.ToInt32(e.KeyChar));
+            calculoSubTotal();
+        }
+
+        private void txtPrecio_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            //elimina la funcion de copiar y pegar en las funcion del precio para evitar esa duplicidad
+            bool paste = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.V)));
+            bool copy = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.C)));
+            if (paste || copy)
+            {
+                permitir = false;
+            }
+            else
+            {
+                permitir = true;
+            }
+        }
+
+        //----------------para el IVA--- solo numeros y una vez el punto
+        public bool soloIVA(int code)
+        {
+            bool resultado;
+            //se evalua si es punto y si es punto se rebiza si ya existe en el textbox
+            if (code == 46 && txtIVA.Text.Contains("."))
+            {
+                resultado = true;
+            }
+            //se evaluan las teclas validas
+            //la validacion se hace en base a la tabla de caracteres de la ASCI
+            else if ((((code >= 48) && (code <= 57)) || (code == 8) || code == 46))
+            {
+                resultado = false;
+            }
+            else if (!permitir)
+            {
+                resultado = permitir;
+            }
+            else
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
+        private void txtIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = soloIVA(Convert.ToInt32(e.KeyChar));
+            calculoTotal();
+        }
+
+        private void txtIVA_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            //elimina la funcion de copiar y pegar en las funcion del precio para evitar esa duplicidad
+            bool paste = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.V)));
+            bool copy = (Convert.ToInt32(e.KeyData) == (Convert.ToInt32(Keys.Control) | Convert.ToInt32(Keys.C)));
+            if (paste || copy)
+            {
+                permitir = false;
+            }
+            else
+            {
+                permitir = true;
+            }
+        }
     }
 }
